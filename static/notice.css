@@ -1,0 +1,8 @@
+.notice {
+    width: 1200px;
+    margin: auto;
+}
+.notice > .col {
+    width: 350px;
+    float: left;
+}
