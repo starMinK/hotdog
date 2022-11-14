@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+* {
+    font-family: 'Jua', sans-serif;
+}
+
+body {
+    background: #FDEDD3;
+}
+
 .registerBox {
-            background-color: #FDEDD3;
+            background-color: white;
 
             width: 500px;
             height: 450px;

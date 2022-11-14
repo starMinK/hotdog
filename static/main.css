@@ -82,3 +82,14 @@ header {
 
 input[id ="menucion"]:checked + .inner > label > .sidebar {right: 0;
 }
+
+.sidebar_id {
+    background-color: #be0516;
+
+    width: 100%;
+    /*position: relative;*/
+}
+.sidebar_login > span {
+    position: absolute;
+    left: 0;
+}
