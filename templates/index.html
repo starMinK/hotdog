@@ -1,48 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <link rel="stylesheet" href="../static/main.css">
-    <script src="../static/login.js" defer></script>
-    <title>Document</title>
- </head>
-<body>
-    <header>
-       <input type="checkbox" id="menucion" style="display: none"/>
-      <div class="inner">
-          <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
-          <label for="menucion">
-              <div class="material-symbols-outlined">
-                  menu
-              </div>
-              <div class="sidebar">
-                  <fieldset class="sidebar_login">
-                      <legend> 로그인</legend>
-                      <label for="sidebar_id">아이디: <input type="text" placeholder="비밀번호" id="sidebar_id"
-                                                          style="margin-left: 21px"/></label><br>
-                      <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호"
-                                                                 id="sidebar_password"
-                                                                 style="margin-left: 5px"/></label><br>
-                      <input type="submit" value="로그인 하기" onclick="login()"/>
-                  </fieldset>
-                  <div class="sidebar_navBtn">
-                      <button onclick="goRegister()">회원가입</button>
-                      <button>리뷰보기</button>
-                      <button>메뉴보기</button>
-                  </div>
-              </div>
-          </label>
-      </div>
-    </header>
-
+{% extends 'base.html' %}
+{% block title %}<title>HOT! DOG</title>{% endblock title %}
+{% block content %}
     <main>
         <div class="question">
             <div class="title">버튼을 클릭해주세요!</div>
@@ -63,14 +21,14 @@
                 <button class="second_btn">난 느끼한거 시른데...</button>
             </div>
 
-            <div class="question_second" id="third">
+            <div class="question_second third">
                 <p>나는 어떤 치즈를 좋아했지?</p>
                 <button class="third_btn">크림치즈</button>
                 <button class="third_btn">체다치즈</button>
                 <button class="third_btn">모짜렐라 치즈</button>
             </div>
 
-            <div class="question_second" id="third">
+            <div class="question_second third">
                 <p>핫도그 종류가 3가지가 있네?</p>
                 <button class="second_btn_last">난 기본이 좋아~</button>
                 <button class="second_btn_last">난 매운게 좋아~!</button>
@@ -91,143 +49,157 @@
             </div>
         </div>
     </main>
-    <script>
-        const href = window.location.href;
-        const firstQue = document.querySelector('#first');
-        const firstYes = document.querySelector('.first_yes');
-        const firstNo = document.querySelector('.first_no');
+{% endblock content %}
+{% block scripts %}
+<link rel="stylesheet" href="../static/main.css">
 
-        <!-- 마지막 질문 (통가래떡)-->
-        const lastQue = document.querySelector('#last');
-        const lastBtns = document.querySelectorAll('.last_btn');
+<script>
+    const href = window.location.href;
+    const firstQue = document.querySelector('#first');
+    const firstYes = document.querySelector('.first_yes');
+    const firstNo = document.querySelector('.first_no');
 
-        const secondQue = document.querySelector('#second');
-        const secondBtn = document.querySelectorAll('.second_btn');
+    <!-- 마지막 질문 (통가래떡)-->
+    const lastQue = document.querySelector('#last');
+    const lastBtns = document.querySelectorAll('.last_btn');
 
-        const thirdQue = document.querySelectorAll('#third');
-        const secondBtnLast = document.querySelectorAll('.second_btn_last');
-        const thirdBtn = document.querySelectorAll('.third_btn');
+    const secondQue = document.querySelector('#second');
+    const secondBtn = document.querySelectorAll('.second_btn');
 
-        const fourLeftQue = document.querySelector('#four_left');
-        const fourRightQue = document.querySelector('#four_rigth');
-        const fourLeftBtn = document.querySelectorAll('.four_btn_left');
-        const fourRightBtn = document.querySelectorAll('.four_btn_right');
+    const thirdQue = document.querySelectorAll('.third');
+    const secondBtnLast = document.querySelectorAll('.second_btn_last');
+    const thirdBtn = document.querySelectorAll('.third_btn');
 
-        const divEle = document.querySelectorAll('.card');
-        const titleEle = document.querySelectorAll('.card-title');
-        for(let i = 0; i < divEle.length; i++) {
-                divEle[i].addEventListener('click',() => {
-                const text = titleEle[i].innerText;
-                window.location.href = '/detail?title' + text;
-            });          
+    const fourLeftQue = document.querySelector('#four_left');
+    const fourRightQue = document.querySelector('#four_rigth');
+    const fourLeftBtn = document.querySelectorAll('.four_btn_left');
+    const fourRightBtn = document.querySelectorAll('.four_btn_right');
+
+    const divEle = document.querySelectorAll('.card');
+    const titleEle = document.querySelectorAll('.card-title');
+    for (let i = 0; i < divEle.length; i++) {
+        divEle[i].addEventListener('click', () => {
+            const text = titleEle[i].innerText;
+            window.location.href = '/detail?title' + text;
+        });
+    }
+
+
+    firstNo.addEventListener('click', (event) => {
+        firstQue.style.display = 'none';
+        for (let i = 0; i < lastBtns.length; i++) {
+            lastBtns[i].addEventListener('click', (event) => {
+                if (i === 0) {
+                    window.location.href = href + 'recomment?result=' + "BG";
+                } else {
+                    window.location.href = href + 'recomment?result=' + "BM"
+                }
+            })
         }
-        
-        
-        firstNo.addEventListener('click', (event) => {
-            firstQue.style.display = 'none';
-            for(let i = 0; i < lastBtns.length; i++) {
-                lastBtns[i].addEventListener('click', (event) => {
-                    if(i === 0) {
-                        window.location.href = href + 'recomment?result=' + "BG";
-                    }else {
-                        window.location.href = href + 'recomment?result=' + "BM"
-                    }
-                })
-            }
-            lastQue.style.display = 'block';
-        });
-        
-        firstYes.addEventListener('click',(event) => {
-            firstQue.style.display = 'none';
-            secondQue.style.display = 'block';
-            for(let i = 0; i < secondBtn.length; i++) {
-                secondBtn[i].addEventListener('click', (event) => {
-                    secondQue.style.display = 'none';
-                    if(i === 0) {
-                        thirdQue[0].style.display = 'block';
-                    } else {
-                        thirdQue[1].style.display = 'block';
-                    }
-                });
-            }
-        });
+        lastQue.style.display = 'block';
+    });
 
-        for(let i = 0; i < thirdBtn.length; i++) {
-            switch(i) {
-                //크림치즈 가져오기 ajax
-                case 0 : thirdBtn[0].addEventListener('click',(event) => {
+    firstYes.addEventListener('click', (event) => {
+        firstQue.style.display = 'none';
+        secondQue.style.display = 'block';
+        for (let i = 0; i < secondBtn.length; i++) {
+            secondBtn[i].addEventListener('click', (event) => {
+                secondQue.style.display = 'none';
+                if (i === 0) {
+                    thirdQue[0].style.display = 'block';
+                } else {
+                    thirdQue[1].style.display = 'block';
+                }
+            });
+        }
+    });
+
+    for (let i = 0; i < thirdBtn.length; i++) {
+        switch (i) {
+            //크림치즈 가져오기 ajax
+            case 0 :
+                thirdBtn[0].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ACC'
-                }) 
+                })
                 break;
-                //체다치즈 질문
-                case 1 : thirdBtn[1].addEventListener('click',(event) => {
+            //체다치즈 질문
+            case 1 :
+                thirdBtn[1].addEventListener('click', (event) => {
                     thirdQue[0].style.display = 'none';
                     fourLeftQue.style.display = 'block';
                 });
                 break;
-                //모짜렐라
-                case 2 : thirdBtn[2].addEventListener('click',(event) => {
+            //모짜렐라
+            case 2 :
+                thirdBtn[2].addEventListener('click', (event) => {
                     thirdQue[0].style.display = 'none';
                     fourRightQue.style.display = 'block';
                 });
                 break;
-            }
         }
+    }
 
-        for(let i = 0; i < secondBtnLast.length; i++) {
-            switch(i) {
-                case 0 : secondBtnLast[0].addEventListener('click',(event) => {
+    for (let i = 0; i < secondBtnLast.length; i++) {
+        switch (i) {
+            case 0 :
+                secondBtnLast[0].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ANO'
-                }); 
+                });
                 break;
 
-                //할라피뇨
-                case 1 : secondBtnLast[1].addEventListener('click',(event) => {
+            //할라피뇨
+            case 1 :
+                secondBtnLast[1].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ANH'
                 });
                 break;
 
-                //점보
-                case 2 : secondBtnLast[2].addEventListener('click',(event) => {
+            //점보
+            case 2 :
+                secondBtnLast[2].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ANZ'
                 });
                 break;
-                default: console.log('세번째 마지막 질문');
-            }
+            default:
+                console.log('세번째 마지막 질문');
         }
-        
-        for(let i = 0; i < fourLeftBtn.length; i++) {
-            fourLeftBtn[i].addEventListener('click', (event) => {
-                if(i === 0) {
-                    //체다치즈 부분 ajax 요청
-                    window.location.href = href + 'recomment?result=' + 'ACHH'
-                } else {
-                    //반반모짜체다
-                    window.location.href = href + 'recomment?result=' + 'ACHM'
-                }
-            });
-        }
+    }
 
-        for(let i = 0; i < fourRightBtn.length; i++) {
-            switch(i) {
-                //라면맵땅 부분 ajax요청
-                case 0: fourRightBtn[0].addEventListener('click',(event) => {
+    for (let i = 0; i < fourLeftBtn.length; i++) {
+        fourLeftBtn[i].addEventListener('click', (event) => {
+            if (i === 0) {
+                //체다치즈 부분 ajax 요청
+                window.location.href = href + 'recomment?result=' + 'ACHH'
+            } else {
+                //반반모짜체다
+                window.location.href = href + 'recomment?result=' + 'ACHM'
+            }
+        });
+    }
+
+    for (let i = 0; i < fourRightBtn.length; i++) {
+        switch (i) {
+            //라면맵땅 부분 ajax요청
+            case 0:
+                fourRightBtn[0].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ACMR'
                 });
                 break;
-                //반반모짜 부분 ajax요청
-                case 1: fourRightBtn[1].addEventListener('click',(event) => {
+            //반반모짜 부분 ajax요청
+            case 1:
+                fourRightBtn[1].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ACMM'
                 });
                 break;
-                //반반모짜 체다
-                case 2: fourRightBtn[2].addEventListener('click',(event) => {
+            //반반모짜 체다
+            case 2:
+                fourRightBtn[2].addEventListener('click', (event) => {
                     window.location.href = href + 'recomment?result=' + 'ACHM'
                 });
                 break;
-                default: console.log('마지막 매콤,체다,반반 질문');
-            }
+            default:
+                console.log('마지막 매콤,체다,반반 질문');
         }
-    </script>
-</body>
-</html>
+    }
+</script>
+{% endblock scripts %}

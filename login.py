@@ -26,7 +26,7 @@ import hashlib
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return render_template('base.html')
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
@@ -41,7 +41,7 @@ def home():
 
 @app.route('/register')
 def register():
-    return render_template('login.html')
+    return render_template('register.html')
 
 @app.route('/api/register', methods=['POST'])
 def api_register():
