@@ -13,8 +13,36 @@
     
     <script>
         $(document).ready(function(){
-          listing();
+            listing();
+            // click();
+            // const divEle = document.querySelectorAll('.card');
+            // const titleEle = document.querySelectorAll('.card-title');
+            // for (let i = 0; i < divEle.length; i++) {
+            //     divEle[i].addEventListener('click', () => {
+            //         const text = titleEle[i].innerText;
+            //         window.location.href = '/detail?title' + text;
+            //     });
+            //
+            // }
+            // $('div').on('click', function() {
+            //     const text = $('#notice-box>div>div>h5').text();
+            //     console.log(text)
+            //     // window.location.href = "/detail?title=" + text
+            // });
         });
+        
+        function click() {
+            const divEle = document.querySelectorAll('.card');
+            const titleEle = document.querySelectorAll('.card-title');
+            const text = $('.notice').text();
+            console.log(text)
+            // for (let i = 0; i < divEle.length; i++) {
+            //     divEle[i].addEventListener('click', () => {
+            //         window.location.href = '/detail?title' + text;
+            //     });
+            //
+            // }
+        }
 
         function listing() {
             $.ajax({
@@ -28,7 +56,7 @@
                         let content = rows[i]['content']
                         let img = rows[i]['imgUrl']
 
-                        let temp_html = `<div class="card">
+                        let temp_html = `<div class="card" onclick="click()">
                                             <img src="${img} class="card-img-top" alt="...">
                                             <div class="card-body">
                                                 <h5 class="card-title">${name}</h5>
@@ -41,6 +69,7 @@
                 }
             })
         }
+        
     </script>
 </head>
 <body>
