@@ -1,35 +1,42 @@
-function register() {
-            if (!$('.id').val()) {
-                alert('아이디를 입력해주세요.')
-            }else if (!$('.password').val()){
-                alert('비밀번호를 입력해주세요.')
-            }else if (!$('.passwordCheck').val()){
-                alert('비밀번호 확인란을 입력해주세요.')
-            }else if (!$('.nickname').val()) {
-                alert('닉네임을 입력해주세요.')
-            }
+$(document).ready(function () {
+    // cookieCheck();
+});
 
-            if ($('.password').val() != $('.passwordCheck').val()) {
-                alert('비밀번호와 비밀번호 확인 값이 다릅니다.')
+function login() {
+    console.log($('#sidebar_id').val(), $('#sidebar_password').val())
+    $.ajax({
+        type: "POST",
+        url: "/api/login",
+        data: {id_give: $('#sidebar_id').val(), pw_give: $('#sidebar_password').val()},
+        success: function (response) {
+            if (response['result'] == 'success') {
+                // 로그인이 정상적으로 되면, 토큰을 받아옵니다.
+                // 이 토큰을 mytoken이라는 키 값으로 쿠키에 저장합니다.
+                $.cookie('mytoken', response['token']);
+                alert('로그인 완료!')
+                window.location.reload()
+            } else {
+                // 로그인이 안되면 에러메시지를 띄웁니다.
+                alert(response['msg'])
             }
         }
-
-function passwordShow() {
-    if($('.password').attr('type') == 'password'){
-            $('.passwordBox > i').attr('class',"fa-sharp fa-solid fa-eye-slash");
-            $('.password').attr('type',"text");
-        }else{
-            $('.passwordBox > i').attr('class',"fa-sharp fa-solid fa-eye");
-            $('.password').attr('type',"password");
-        }
+    })
 }
 
-function passwordCheckShow() {
-    if($('.passwordCheck').attr('type') == 'password'){
-            $('.passwordCheckBox > i').attr('class',"fa-sharp fa-solid fa-eye-slash");
-            $('.passwordCheck').attr('type',"text");
-        }else{
-            $('.passwordCheckBox > i').attr('class',"fa-sharp fa-solid fa-eye");
-            $('.passwordCheck').attr('type',"password");
-        }
+function goRegister() {
+    window.location.href=("/register")
+}
+
+function cookieCheck() {
+    if(document.cookie) {
+        let tempHtml = ``;
+        $('.sidebar').empty();
+
+        tempHtml = `<div class="sidebar_navBtn">
+                        <button>리뷰보기</button>
+                        <button>메뉴보기</button>
+                    </div>`
+
+        $('.sidebar').append(tempHtml);
+    }
 }

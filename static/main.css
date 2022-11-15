@@ -27,7 +27,7 @@ header {
 .inner > label > .material-symbols-outlined {
     position: absolute;
     top: 0;
-    right: -250px; 
+    right: -250px;
     width: 200px;
     font-size: 40px;
     height: 50px;
@@ -142,5 +142,3 @@ main > .question > .title {
     font-size: 25px;
     height: 300px;
 }
-
-

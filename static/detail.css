@@ -1,0 +1,54 @@
+.detail-box {
+    width: 1200px;
+    margin: auto;
+    display :flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.detail-box > img{
+    width: 800px;
+    height: 600px;
+    object-fit: cover;
+    margin: 20px auto 20px auto;
+
+}
+.detail-box > h3{
+    font-size: 50px;
+    margin: 20px auto 20px auto;
+
+}
+.detail-box > p{
+    font-size: 25px;
+    margin: 20px auto 20px auto;
+
+}
+.comment-box {
+    width: 1200px;
+    margin: auto;
+    display :flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.comment-box > input {
+    width: 500px;
+
+    border: gray solid 1px;
+    border-radius: 7px;
+
+    padding: 10px;
+}
+.comment-box > button {
+    color: white;
+
+    background-color: gray;
+
+    border: #ED3128 solid 0px;
+    border-radius: 7px;
+
+    padding: 9px 10px 10px 9px;
+
+    margin-left: 10px;
+}
