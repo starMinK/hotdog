@@ -1,3 +1,7 @@
+$(document).ready(function () {
+    cookieCheck();
+});
+
 function login() {
     console.log($('#sidebar_id').val(), $('#sidebar_password').val())
     $.ajax({
@@ -21,4 +25,18 @@ function login() {
 
 function goRegister() {
     window.location.href=("/register")
+}
+
+function cookieCheck() {
+    if(document.cookie) {
+        let tempHtml = ``;
+        $('.sidebar').empty();
+
+        tempHtml = `<div class="sidebar_navBtn">
+                        <button>리뷰보기</button>
+                        <button>메뉴보기</button>
+                    </div>`
+
+        $('.sidebar').append(tempHtml);
+    }
 }
