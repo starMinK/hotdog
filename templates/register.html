@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}<title>메뉴 목록</title>{% endblock title %}
+
+{% block scripts %}
+    <link rel="stylesheet" href="../static/register.css">
+    <script type="javascript" src="../static/register.css"></script>
+{% endblock scripts %}
+
+{% block content %}
+<div class="backgroundHotdog">
+    <div class="registerBox">
+        <div class="registerTittle"><span>회원가입</span></div>
+        <div class="inputBox">
+            <div><span>아이디</span><input type="text" class="id" placeholder="아이디"></div>
+            <div class="passwordBox"><span>비밀번호</span><i class="fa-solid fa-eye" onclick="passwordShow()"></i><input
+                    type="password" class="password"
+                    placeholder="비밀번호"></div>
+            <div class="passwordCheckBox"><span>비밀번호 확인</span><i class="fa-solid fa-eye"
+                                                                 onclick="passwordCheckShow()"></i><input
+                    type="password" class="passwordCheck"
+                    placeholder="비밀번호 확인"></div>
+            <div><span>닉네임</span> <input type="text" class="nickname" placeholder="닉네임"></div>
+        </div>
+
+        <button onclick="register()">회원가입 하기!</button>
+    </div>
+</div>
+{% endblock content %}
