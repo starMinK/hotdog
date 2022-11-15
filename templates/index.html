@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block title %}<title>HOT! DOG</title>{% endblock title %}
+
+{% block scripts %}
+<link rel="stylesheet" href="../static/main.css">
+{% endblock scripts %}
+
 {% block content %}
     <main>
         <div class="question">
@@ -49,9 +54,6 @@
             </div>
         </div>
     </main>
-{% endblock content %}
-{% block scripts %}
-<link rel="stylesheet" href="../static/main.css">
 
 <script>
     const href = window.location.href;
@@ -202,4 +204,4 @@
         }
     }
 </script>
-{% endblock scripts %}
+{% endblock content %}
