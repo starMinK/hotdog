@@ -1,8 +1,81 @@
-.notice {
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.search-box {
     width: 1200px;
     margin: auto;
+
+    padding: 50px 50px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
-.notice > .col {
-    width: 350px;
+
+.search-box > input {
+    width: 300px;
+
+    border: gray solid 1px;
+    border-radius: 7px;
+
+    padding: 10px;
+}
+
+.search-box > button {
+    color: white;
+
+    background-color: gray;
+
+    border: #ED3128 solid 0px;
+    border-radius: 7px;
+
+    padding: 0 10px 0 10px;
+
+    margin-left: 10px;
+}
+
+.search-box > button:hover {
+    background-color: #ED3128;
+}
+
+.notice {
+    font-family: 'ONE-Mobile-POP';
+
+    width: 1200px;
+    margin: auto;
+
+}
+.notice > .card {
+    height: 300px;
+    width: 348px;
+
     float: left;
+
+    border: #86300f solid 1px;
+    border-radius: 10px;
+
+    text-align: center;
+
+    margin: 50px 25px 0 25px;
+}
+
+.notice > .card:hover {
+    background-color: #FDEDD3;
+}
+
+.notice > .card > img {
+    height: 140px;
+
+    margin: 10px 0 20px 0;
+}
+.card-title {
+    font-size: 25px;
+}
+.card-text {
+    font-size: 20px;
+
+    margin: 20px 20px 0 20px;
 }
