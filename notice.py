@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
-
+import certifi
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/Cluster0?retryWrites=true&w=majority')
+
+ca = certifi.where()
+client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=ca)
 db = client.hotdogs
+
 
 @app.route('/')
 def home():
