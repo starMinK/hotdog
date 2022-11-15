@@ -9,6 +9,7 @@ ca = certifi.where()
 client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
 db = client.hotdogs
 
+
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
 SECRET_KEY = 'team1HotdogSecretKey'
@@ -48,9 +49,21 @@ def menu_get():
 def recomment():
     return render_template('recomment.html');
 
+
 @app.route('/notice')
 def notice():
    return render_template('notice.html')
+
+@app.route("/detail")
+def detailHtml():
+    return render_template('detail.html')
+
+@app.route("/api/detail", methods=["POST"])
+def detail_post():
+    detail_receive = request.form['detail_give']
+    detail_name = db.menu.find_one({'name': detail_receive},{'_id': False})
+    return jsonify({'hotdogs':detail_name})
+
 
 @app.route("/hotdog-list", methods=["GET"])
 def hotdog_get():

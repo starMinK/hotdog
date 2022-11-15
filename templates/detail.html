@@ -5,35 +5,36 @@
 
 <script>
 
-        $(document).ready(function () {
-            listing();
-            const name = getId();
-            console.log(name);
-        });
+    $(document).ready(function () {
+        const name = getId();
+        listing(name);
+
+    });
+
 
         function getId() {
             const urlParams = new URLSearchParams(location.search);
-            console.log(urlParams.get('title'));
             return urlParams.get('title');
         }
 
-        function listing() {
+        function listing(name) {
             $.ajax({
-                type: "GET",
-                url: "/hotdog-list",
-                data: {},
+                type: "POST",
+                url: "/api/detail",
+                data: {detail_give:name},
                 success: function (response) {
                     let rows = response['hotdogs']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let content = rows[i]['content']
-                        let img = rows[i]['detailImgUrl']
+                    console.log(rows['name'])
+
+                        let name = rows['name']
+                        let content = rows['content']
+                        let img = rows['detailImgUrl']
 
                         let temp_html = `<h3> ${name} </h3>
                                         <img src="${img}">
                                         <p> ${content}</p>`
                         $('.detail-box').append(temp_html)
-                    }
+
                 }
             })
         }
@@ -41,6 +42,7 @@
 {% endblock scripts %}
 
 {% block content %}
+
 <div class="detail-box">
 </div>
 <div class="comment-box">
