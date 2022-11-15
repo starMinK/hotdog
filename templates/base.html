@@ -14,7 +14,7 @@
 
     {% block title %}
     <!--  페이지별 타이틀 공간  -->
-    <title>Document</title>
+    <title>Document</title>,
     {% endblock title %}
 
     {% block scripts %}
@@ -44,6 +44,9 @@
 
         function goRegister() {
             window.location.href = ("/register")
+        }
+        function goNotice() {
+            window.location.href = ("/notice");
         }
 
         function cookieCheck() {
@@ -81,7 +84,7 @@
             justify-content: center;
             align-items: center;
         }
-
+        
         .inner > label > .material-symbols-outlined {
             position: absolute;
             top: 0;
@@ -92,6 +95,11 @@
             border: none;
             z-index: 10;
             background-color: inherit;
+        }
+
+        /* 사이드 닫는 x버튼*/
+        #close {
+            display: none;
         }
 
         /* sidebar */
@@ -151,8 +159,11 @@
     <div class="inner">
         <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
         <label for="menucion">
-            <div class="material-symbols-outlined">
+            <div class="material-symbols-outlined" id="open">
                 menu
+            </div>
+            <div class="material-symbols-outlined" id="close">
+                close
             </div>
             <div class="sidebar">
                 <fieldset class="sidebar_login">
@@ -167,11 +178,23 @@
                 <div class="sidebar_navBtn">
                     <button onclick="goRegister()">회원가입</button>
                     <button>리뷰보기</button>
-                    <button>메뉴보기</button>
+                    <button onclick="goNotice()">메뉴보기</button>
                 </div>
             </div>
         </label>
     </div>
+    <script>
+        const closeBtn = document.querySelector('#close');
+        const openBtn = document.querySelector('#open');
+        closeBtn.addEventListener('click', () => {
+            openBtn.style.display = 'block';
+            closeBtn.style.display = 'none';
+        });
+        openBtn.addEventListener('click', () => {
+            openBtn.style.display = 'none';
+            closeBtn.style.display = 'block';
+        });
+    </script>
 </header>
 {% block content %} {% endblock content %}
 </body>

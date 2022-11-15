@@ -27,6 +27,10 @@ import hashlib
 def homeHtml():
     return render_template('index.html')
 
+@app.route("/detail")
+def detailHtml():
+    return render_template('detail.html')
+
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
@@ -46,11 +50,19 @@ def menu_get():
 
 @app.route("/recomment", methods=["GET"])
 def recomment():
-    return render_template('recomment.html');
+    return render_template('recomment.html')
+
+@app.route("/api/recomment", methods=["POST"])
+def recomment_get():
+    recomment_receive = request.form['recomment_give']
+    print(recomment_receive)
+    recommnet_name = db.menu.find_one({'result':recomment_receive}, {'_id':False}) 
+    return jsonify({'result':recommnet_name})
+
 
 @app.route('/notice')
 def notice():
-   return render_template('notice.html')
+    return render_template('notice.html')
 
 @app.route("/hotdog-list", methods=["GET"])
 def hotdog_get():

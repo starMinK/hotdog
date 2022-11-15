@@ -5,28 +5,43 @@
 <link rel="stylesheet" href="../static/recomment.css">
 
 <script>
+    $(document).ready(function () {
+        const result = getId();
+        posting(result);
+    });
+
+    function posting(result) {
+        $.ajax({
+            type: 'POST',
+            url: '/api/recomment',
+            data: {recomment_give:result},
+            success: function (response) {
+                let rows = response['result'];
+                let title = rows['name'];
+                let img = rows['detailImgUrl'];
+                let content = rows['content'];
+                console.log(rows);
+                console.log(title);
+                console.log(img);
+                console.log(content);
+                let temp_html = `<img src=${img}/><p>${title}</p> <p>${content}</p>`;
+                $(`.content`).append(temp_html);
+            }
+        });
+    }
+
     function getId() {
         const urlParams = new URLSearchParams(location.search);
         console.log(urlParams.get('result'));
         return urlParams.get('result');
     }
 
-    $(document).ready(function () {
-        const result = getId();
-        posting(result);
+    function goMain() {
+        window.location.href = "/";
+    }
 
-    });
-
-    function posting(result) {
-        console.log('result', result);
-        $.ajax({
-            type: 'POST',
-            url: '/recomment_get',
-            data: {},
-            success: function (response) {
-                console.log(response);
-            }
-        });
+    function goNotice() {
+        window.location.href = "/notice";
     }
 </script>
 {% endblock scripts %}
@@ -35,15 +50,13 @@
 <main>
     <div class="inner">
         <div class="content">
-            main입니다.
+            <p>짜잔! 당신의 핫도그는?!~</p>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>핫도그 설명</p>
-    <p>핫도그 맛이겠다 배고프다 미치겠다.. 맛이겠다. 치즈즈즈즈즈즈~</p>
-    <button>메뉴 보러 가기</button>
-    <button>처음으로</button>
+    <button onclick="goNotice()">메뉴 보러 가기</button>
+    <button onclick="goMain()">처음으로</button>
 </footer>
 {% endblock content %}

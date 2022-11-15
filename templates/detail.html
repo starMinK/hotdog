@@ -6,14 +6,12 @@
 <script>
 
         $(document).ready(function () {
-            listing();
             const name = getId();
-            console.log(name);
+            listing(naame);
         });
 
         function getId() {
             const urlParams = new URLSearchParams(location.search);
-            console.log(urlParams.get('title'));
             return urlParams.get('title');
         }
 
