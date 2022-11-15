@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    cookieCheck();
+    // cookieCheck();
 });
 
 function login() {
