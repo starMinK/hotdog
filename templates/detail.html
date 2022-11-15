@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/main.css">
+    <link rel="stylesheet" href="../static/detail.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>상세페이지</title>
+
+
+    <script>
+        $(document).ready(function () {
+            listing();
+            const name = getId();
+            console.log(name);
+        });
+
+        function getId() {
+            const urlParams = new URLSearchParams(location.search);
+            console.log(urlParams.get('title'));
+            return urlParams.get('title');
+        }
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/hotdog-list",
+                data: {},
+                success: function (response) {
+                    let rows = response['hotdogs']
+                    for (let i = 0; i < rows.length; i++) {
+                        let name = rows[i]['name']
+                        let content = rows[i]['content']
+                        let img = rows[i]['detailImgUrl']
+
+                        let temp_html = `<h3> ${name} </h3>
+                                        <img src="${img}">
+                                        <p> ${content}</p>`
+                        $('.detail-box').append(temp_html)
+                    }
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+<header>
+    <input type="checkbox" id="menucion" style="display: none"/>
+    <div class="inner">
+        <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
+        <label for="menucion">
+            <div class="material-symbols-outlined">
+                menu
+            </div>
+            <div class="sidebar">
+                <form action="">
+                    <fieldset class="sidebar_login">
+                        <legend> 로그인</legend>
+                        <label for="sidebar_id">아이디 :<input type="text" title="아이다" id="sidebar_id"/></label><br>
+                        <label for="sidebar_password">비밀번호 :<input type="password" title="비밀번호" id="sidebar_password"/></label><br>
+                        <input type="submit" value="로그인 하기"/>
+                    </fieldset>
+                </form>
+                <div class="sidebar_navBtn">
+                    <button>회원가입</button>
+                    <button>리뷰보기</button>
+                    <button>메뉴보기</button>
+                </div>
+            </div>
+        </label>
+    </div>
+</header>
+<div class="detail-box">
+</div>
+<div class="comment-box">
+    <input type="text" placeholder="의견을 남겨주세요.">
+    <button>등록</button>
+</div>
+</body>
+</html>

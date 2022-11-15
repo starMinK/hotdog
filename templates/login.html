@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/3847ec6431.js" crossorigin="anonymous"></script>
+    <link href="../static/login.css" rel="stylesheet"/>
+    <script src="../static/login.js"></script>
+
+    <title>Hot! Dog</title>
+</head>
+<body>
+    <div class="backgroundHotdog">
+        <div class="registerBox">
+            <div class="registerTittle"><span>회원가입</span></div>
+            <div class="inputBox">
+                <div><span>아이디</span><input type="text" class="id" placeholder="아이디"></div>
+                <div class="passwordBox"><span>비밀번호</span><i class="fa-solid fa-eye" onclick="passwordShow()"></i><input type="password" class="password"
+                                                                            placeholder="비밀번호"></div>
+                <div class="passwordCheckBox"><span>비밀번호 확인</span><i class="fa-solid fa-eye" onclick="passwordCheckShow()"></i><input type="password" class="passwordCheck"
+                                                                               placeholder="비밀번호 확인"></div>
+                <div><span>닉네임</span> <input type="text" class="nickname" placeholder="닉네임"></div>
+            </div>
+
+            <button onclick="register()">회원가입 하기!</button>
+        </div>
+    </div>
+</body>
+</html>
