@@ -5,38 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../static/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="../static/login.js"></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="stylesheet" href="../static/main.css">
+    <script src="../static/login.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <input type="checkbox" id="menucion" style="display: none"/>
-        <div class="inner">
-            <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
-            <label for="menucion">
-                <div class="material-symbols-outlined">
-                    menu
+<header>
+    <input type="checkbox" id="menucion" style="display: none"/>
+    <div class="inner">
+        <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
+        <label for="menucion">
+            <div class="material-symbols-outlined">
+                menu
+            </div>
+            <div class="sidebar">
+                <fieldset class="sidebar_login">
+                    <legend> 로그인</legend>
+                    <label for="sidebar_id">아이디: <input type="text" placeholder="비밀번호" id="sidebar_id"
+                                                        style="margin-left: 21px"/></label><br>
+                    <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호"
+                                                               id="sidebar_password"
+                                                               style="margin-left: 5px"/></label><br>
+                    <input type="submit" value="로그인 하기" onclick="login()"/>
+                </fieldset>
+                <div class="sidebar_navBtn">
+                    <button onclick="goRegister()">회원가입</button>
+                    <button>리뷰보기</button>
+                    <button>메뉴보기</button>
                 </div>
-                <div class="sidebar">
-                    <form action="">
-                        <fieldset class="sidebar_login">
-                            <legend> 로그인 </legend>
-                            <label for="sidebar_id">아이디: <input type="text" placeholder="비밀번호" id="sidebar_id" style="margin-left: 21px"/></label><br>
-                            <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호" id="sidebar_password" style="margin-left: 5px"/></label><br>
-                            <input type="submit" value="로그인 하기" onclick="login()"/>
-                        </fieldset>
-                    </form>
-                    <div class="sidebar_navBtn">
-                        <button>회원가입</button>
-                        <button>리뷰보기</button>
-                        <button>메뉴보기</button>
-                    </div>
-                </div>
-            </label>
-        </div>
-    </header>
+            </div>
+        </label>
+    </div>
+</header>
 </body>
 </html>

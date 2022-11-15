@@ -31,6 +31,7 @@ function register() {
         success: function (response) {
             if (response['result'] == 'success') {
                 alert('회원가입이 완료되었습니다.')
+                window.history.back();
             } else if(response['result'] == 'id_default'){
                 alert('중복된 아이디가 있습니다.')
             } else if(response['result'] == 'nickname_default'){

@@ -1,4 +1,5 @@
 function login() {
+    console.log($('#sidebar_id').val(), $('#sidebar_password').val())
     $.ajax({
         type: "POST",
         url: "/api/login",
@@ -16,4 +17,8 @@ function login() {
             }
         }
     })
+}
+
+function goRegister() {
+    window.location.href=("/register")
 }
