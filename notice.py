@@ -8,7 +8,7 @@ client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/Clust
 db = client.hotdogs
 
 
-@app.route('/')
+@app.route('/notice')
 def home():
    return render_template('notice.html')
 
