@@ -21,14 +21,13 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .inner > label > .material-symbols-outlined {
     position: absolute;
     top: 0;
-    right: -250px;
-    width: 200px;
+    right: 20px; 
+    /* width: 200px; */
     font-size: 40px;
     height: 50px;
     border: none;
@@ -50,14 +49,15 @@ header {
     flex-direction: column;
 }
 
-.sidebar > .sidebar_login {
+.sidebar > form > .sidebar_login {
     text-align: center;
     width: 300px;
     height: 250px;
     margin: 120px 0px 0px 0px;
 }
 
-.sidebar > .sidebar_login > label > input {
+
+.sidebar > form >  .sidebar_login > label > input {
     margin-top: 25px;
     margin-bottom: 30px;
     height: 25px;
@@ -79,64 +79,34 @@ header {
     background-color: white
 }
 
-input[id ="menucion"]:checked + .inner > label > .sidebar {right: 0;}
+input[id ="menucion"]:checked + .inner > label > .sidebar {right: 0;
+}
 
 /* main */
-main > .question {
-    width: 1200px;
-    margin: auto;
-    text-align: center;
-    height: 500px;
+
+main > .inner {
+    height: 400px;
+    background-color: yellow;
 }
 
-main > .question > .title {
-    width: 300px;
-    font-size: 30px;
-    font-weight: 600;
-    margin: 30px auto ;
-}
-/* 질문이 2개씩 나오는 부분 */
-.question_first {
-    display: flex;
-    justify-content: center;
+main > .inner > .content {
+    width: 900px;
+    height: 350px;
+    background-color: chocolate;
 }
 
-.question_first > button {
+/* footer */
+footer {
+    width: 100%;
+    background-color: gray;
+    height: 150px;
+   text-align: center;
+}
+footer > button {
     border: none;
-    margin: 20px;
-    width: 500px;
     font-size: 25px;
-    height: 300px;
+    margin: 30px 10px 10px 10px;
+    background-color: gray;
+    color: #f7f7f7;
 }
 
-.question > #last{
-    display: none;
-}
-
-.question > #second{
-    display: none;
-}
-
-.question > #four_left {
-    display: none;
-}
-.question > #four_left {
-    display: none;
-}
-
-/* 질문이 3개씩 나오는 부분 */
-.question > .question_second {
-    display: none;
-}
-
-.question > .question_second > p {
-    width: inherit;
-    margin:auto;
-}
-.question > .question_second > button {
-    border: none;
-    margin: 20px;
-    width: 300px;
-    font-size: 25px;
-    height: 300px;
-}

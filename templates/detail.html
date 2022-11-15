@@ -16,7 +16,15 @@
     <script>
         $(document).ready(function () {
             listing();
+            const name = getId();
+            console.log(name);
         });
+
+        function getId() {
+            const urlParams = new URLSearchParams(location.search);
+            console.log(urlParams.get('title'));
+            return urlParams.get('title');
+        }
 
         function listing() {
             $.ajax({
@@ -34,7 +42,6 @@
                                         <img src="${img}">
                                         <p> ${content}</p>`
                         $('.detail-box').append(temp_html)
-
                     }
                 }
             })

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Jua:400');
+* {
+    font-family: 'Jua', sans-serif;
+}
+
+body {
+    background: #FDEDD3;
+}
+
+.registerBox {
+            background-color: white;
+
+            width: 500px;
+            height: 450px;
+
+            border-radius: 20px;
+            border: 1px solid black;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .registerTittle {
+            width: 500px;
+            height: 50px;
+
+            text-align: center;
+            font-size: xx-large;
+
+            position: absolute;
+            top: 20px;
+        }
+
+        .inputBox {
+            height: 60%;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inputBox > div {
+            margin: auto 0;
+        }
+
+        .inputBox > div > span{
+            width: 180px;
+            height: 20px;
+
+            position: absolute;
+            left: 10px;
+
+            text-align: center;
+            font-size: x-large;
+        }
+
+        .inputBox > div > input {
+            background-color: #fba916;
+
+            border: 1px solid black;
+            border-radius: 5px;
+
+            width: 180px;
+            height: 30px;
+
+            position: absolute;
+            right: 10px;
+
+            font-size: large;
+        }
+
+        .inputBox > div > input:hover {
+            border: 2px solid #be0516;
+        }
+
+        .inputBox > div > input:focus {
+            box-shadow: inset 0px 0px 10px 5px rgba(247, 212, 95, 0.9);
+        }
+
+        .inputBox > div > i {
+            position: absolute;
+            z-index: 2;
+            right: 15px;
+            margin-top:8px;
+        }
+
+        .registerBox > button {
+            background-color: #bf0516;
+            color: white;
+
+            width: 150px;
+            height: 50px;
+
+            position: absolute;
+            bottom: 20px;
+
+            font-size: large;
+        }
