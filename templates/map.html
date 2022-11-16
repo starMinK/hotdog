@@ -16,8 +16,9 @@
 
     .dropdown {
         /*background-color: #ED3128;*/
+        font-family: BMHANNAPro;
         width: 800px;
-        margin: 100px auto 0 auto;
+        margin: 50px auto 0 auto;
 
         display: flex;
         flex-direction: row;
@@ -30,6 +31,28 @@
 
         border: transparent;
         border-radius: 5px;
+
+        width: 100px;
+
+    }
+
+    .btn {
+        width : 200px;
+    }
+
+    .dropdown-menu > li {
+        width: 200px;
+    }
+
+    h2 {
+        font-family: BMHANNAPro;
+        font-size: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 40px;
     }
 </style>
 
@@ -51,34 +74,110 @@
 
     function foundItemSoul() {
         let tempHtml = `
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 몰라 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서울 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 구 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 대충 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 넣어 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 주세요. </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 부탁 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 드립니다. </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강남구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강북구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강서구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 관악구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 광진구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 구로구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 금천구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 노원구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 도봉구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동대문구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동작구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 마포구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서대문구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서초구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 성동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 성북구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 송파구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 양천구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 영등포구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 용산구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 은평구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 종로구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중랑구 </a></li>
             `;
         $('#region-in-menu').empty();
         $('#region-in-menu').append(tempHtml);
     }
 
-    function foundItemJinju() {
+    function foundItemBusan() {
         let tempHtml = `
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 몰라 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 진주 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 구 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 대충 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 넣어 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 주세요. </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 부탁 </a></li>
-                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 드립니다. </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강서구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 금정구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 기장군 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 남구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동래구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 부산진구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 북구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 사상구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 사하구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 수영구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 연재구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 영도구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 해운대구 </a></li>
             `;
         $('#region-in-menu').empty();
         $('#region-in-menu').append(tempHtml);
     }
 
+     function foundItemIncheon() {
+        let tempHtml = `
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 강화군 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 계양구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 남동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 미추홀구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 부평구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 연수구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 옹진군 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중구 </a></li>
+            `;
+        $('#region-in-menu').empty();
+        $('#region-in-menu').append(tempHtml);
+    }
+
+    function foundItemDaejeon() {
+        let tempHtml = `
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 대덕구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 유성구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중구 </a></li>
+            `;
+        $('#region-in-menu').empty();
+        $('#region-in-menu').append(tempHtml);
+    }
+
+    function foundItemGwangju() {
+        let tempHtml = `
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 광산구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 남구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 북구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 서구 </a></li>
+            `;
+        $('#region-in-menu').empty();
+        $('#region-in-menu').append(tempHtml);
+    }
+
+    function foundItemUlsan() {
+        let tempHtml = `
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 남구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 동구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 북구 </a></li>
+                    <li><a class="dropdown-item" onclick="getItemInfo(this)" href="#"> 중구 </a></li>
+            `;
+        $('#region-in-menu').empty();
+        $('#region-in-menu').append(tempHtml);
+    }
     function getItemInfo(ths) {
         let sellect = $(ths).text();
         $('#region-in').text(sellect);
@@ -96,15 +195,42 @@
         foundItemDeagu();
     }
 
-    function getItemJinju(ths) {
+    function getItemBusan(ths) {
         let sellect = $(ths).text();
         $('#region').text(sellect);
-        foundItemJinju();
+        foundItemBusan();
     }
+
+    function getItemIncheon(ths) {
+        let sellect = $(ths).text();
+        $('#region').text(sellect);
+        foundItemIncheon();
+    }
+
+     function getItemDaejeon(ths) {
+        let sellect = $(ths).text();
+        $('#region').text(sellect);
+        foundItemDaejeon();
+    }
+
+    function getItemGwangju(ths) {
+        let sellect = $(ths).text();
+        $('#region').text(sellect);
+        foundItemGwangju();
+    }
+
+     function getItemUlsan(ths) {
+        let sellect = $(ths).text();
+        $('#region').text(sellect);
+        foundItemUlsan();
+    }
+
+
 </script>
 {% endblock scripts %}
 
 {% block content %}
+<h2> 근처 매장찾기 </h2>
 <div class="dropdown">
     <a id="region" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
        aria-expanded="false">
@@ -113,9 +239,12 @@
 
     <ul class="dropdown-menu">
         <li><a class="dropdown-item" onclick="getItemSoul(this)" href="#"> 서울특별시 </a></li>
-        <li><a class="dropdown-item" onclick="getItem(this)" href="#"> 부산광역시 </a></li>
+        <li><a class="dropdown-item" onclick="getItemBusan(this)" href="#"> 부산광역시 </a></li>
         <li><a class="dropdown-item" onclick="getItemDeagu(this)" href="#"> 대구광역시 </a></li>
-        <li><a class="dropdown-item" onclick="getItemJinju(this)" href="#"> 진주광역시 </a></li>
+        <li><a class="dropdown-item" onclick="getItemIncheon(this)" href="#"> 인천광역시 </a></li>
+        <li><a class="dropdown-item" onclick="getItemDaejeon(this)" href="#"> 대전광역시 </a></li>
+        <li><a class="dropdown-item" onclick="getItemGwangju(this)" href="#"> 광주광역시 </a></li>
+        <li><a class="dropdown-item" onclick="getItemUlsan(this)" href="#"> 울산광역시 </a></li>
     </ul>
 
     <a id="region-in" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
