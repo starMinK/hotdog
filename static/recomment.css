@@ -1,27 +1,44 @@
 /* main */
 
 main > .inner {
-    height: 400px;
-    background-color: yellow;
+    height: 600px;
 }
 
 main > .inner > .content {
+    text-align: center;
     width: 900px;
-    height: 350px;
-    background-color: chocolate;
+    height: 500px;
+}
+main > .inner > .content  > img {
+    width: 400px;
+    height: 300px;
+}
+
+main > .inner > .content  > p:nth-child(1) {
+    font-size: 50px;
+    margin: 0  auto 30px auto;
+}
+main > .inner > .content  > p:nth-child(3) {
+    font-size: 40px;
+    margin: 30px;
+}
+main > .inner > .content  > p:nth-child(4) {
+    font-size: 30px;
+
 }
 
 /* footer */
 footer {
     width: 100%;
     background-color: gray;
-    height: 150px;
-   text-align: center;
+    height: 200px;
+    display: flex;
+    justify-content: center;
 }
 footer > button {
     border: none;
     font-size: 25px;
-    margin: 30px 10px 10px 10px;
+    margin: 30px 20px 20px 20px;
     background-color: gray;
     color: #f7f7f7;
 }

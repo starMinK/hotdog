@@ -5,16 +5,10 @@
 
 <script>
     $(document).ready(function () {
-        listing();
-        const name = getId();
-        console.log(name);
-    });
-    
-    $(document).ready(function () {
         const name = getId();
         listing(name);
-
     });
+   
         function getId() {
             const urlParams = new URLSearchParams(location.search);
             return urlParams.get('title');
