@@ -9,29 +9,34 @@
         const name = getId();
         console.log(name);
     });
+    
+    $(document).ready(function () {
+        const name = getId();
+        listing(name);
 
-    function getId() {
-        const urlParams = new URLSearchParams(location.search);
-        console.log(urlParams.get('title'));
-        return urlParams.get('title');
-    }
+    });
+        function getId() {
+            const urlParams = new URLSearchParams(location.search);
+            return urlParams.get('title');
+        }
 
-    function listing() {
-        $.ajax({
-            type: "GET",
-            url: "/hotdog-list",
-            data: {},
-            success: function (response) {
-                let rows = response['hotdogs']
-                for (let i = 0; i < rows.length; i++) {
-                    let name = rows[i]['name']
-                    let content = rows[i]['content']
-                    let img = rows[i]['detailImgUrl']
+        function listing(name) {
+            $.ajax({
+                type: "POST",
+                url: "/api/detail",
+                data: {detail_give:name},
+                success: function (response) {
+                    let rows = response['hotdogs']
+                    console.log(rows['name'])
 
-                    let temp_html = `<h3> ${name} </h3>
+                        let name = rows['name']
+                        let content = rows['content']
+                        let img = rows['detailImgUrl']
+
+                        let temp_html = `<h3> ${name} </h3>
                                         <img src="${img}">
                                         <p> ${content}</p>`
-                    $('.detail-box').append(temp_html)
+                        $('.detail-box').append(temp_html)
                 }
             }
         })
@@ -103,6 +108,7 @@
 {% endblock scripts %}
 
 {% block content %}
+
 <div class="detail-box">
 </div>
 <div class="comment-box">
