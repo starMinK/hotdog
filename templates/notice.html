@@ -17,6 +17,7 @@
             const text = titleEle[i].innerText;
             console.log(text);
             divEle[i].addEventListener('click', function () {
+                console.log('클릭됐습니다!');
                 window.location.href = '/detail?title=' + text;
             });
         }

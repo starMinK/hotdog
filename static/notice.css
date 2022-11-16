@@ -97,7 +97,6 @@
 
     width: 1200px;
     margin: auto;
-
 }
 
 .notice > .card {
@@ -107,6 +106,7 @@
     float: left;
 
     border: black solid 2px;
+
     border-radius: 10px;
 
     text-align: center;
