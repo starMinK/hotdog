@@ -180,6 +180,7 @@
 
 
         .sidebar > .sidebar_login {
+            font-family: 'BMHANNAPro';
             text-align: center;
             width: 300px;
             height: 250px;
@@ -220,22 +221,27 @@
         }
 
         .sidebar > .sidebar_navBtn > button {
-            margin: 15px;
-            font-size: 20px;
-            border: 2px solid white;
-            border-radius: 5px;
-            background-color: white;
+            margin: 15px 50px 15px 50px;
+            font-size: 25px;
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: 3px solid #FCAA16;
+            background-color: #FCAA16;
+            display: inline-block;
+            text-transform: uppercase;
         }
-
-        .sidebar > .sidebar_navBtn > button:hover {
-            background-color: #86300f;
-            border: 2px solid #86300f;
-            color: white;
-            transition: 0.3s;
+        
+        .sidebar > .sidebar_navBtn > button:after {
+            display: block;
+            content: '';
+            border-bottom: solid 3px black;
+            transform: scaleX(0);
+            transition: transform 250ms ease-in-out;
         }
-
-        .sidebar button:hover {
-            border: 2px solid red;
+        
+        .sidebar > .sidebar_navBtn > button:hover:after {
+            transform: scaleX(1);
         }
 
         input[id ="menucion"]:checked + .inner > label > .sidebar {
