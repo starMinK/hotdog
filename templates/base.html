@@ -127,7 +127,7 @@
             position: absolute;
             top: 0;
             right: 20px;
-            /* width: 200px; */
+            /*width: 200px;*/
             font-size: 40px;
             height: 50px;
             border: none;
@@ -173,12 +173,29 @@
             height: 250px;
             margin: 120px 0px 0px 0px;
         }
-
-
+        
+        .sidebar > .sidebar_login > legend {
+            margin-bottom: 25px;
+        }
+        
         .sidebar > .sidebar_login > label > input {
-            margin-top: 25px;
             margin-bottom: 30px;
             height: 25px;
+            padding: 5px;
+            border: white solid 2px;
+            border-radius: 5px;
+        }
+        
+        .sidebar > .sidebar_login > input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        .sidebar > .sidebar_login > input:hover {
+            background-color: #86300f;
+            color: white;
+            transition: 0.3s;
         }
 
         .sidebar > .sidebar_navBtn {
@@ -195,7 +212,14 @@
             font-size: 20px;
             border: 2px solid white;
             border-radius: 5px;
-            background-color: white
+            background-color: white;
+        }
+        
+        .sidebar > .sidebar_navBtn > button:hover {
+            background-color: #86300f;
+            border: 2px solid #86300f;
+            color: white;
+            transition: 0.3s;
         }
 
         .sidebar button:hover {
@@ -221,7 +245,7 @@
                 <div class="sidebar_user"></div>
                 <fieldset class="sidebar_login">
                     <legend> 로그인</legend>
-                    <label for="sidebar_id">아이디: <input type="text" placeholder="비밀번호" id="sidebar_id"
+                    <label for="sidebar_id">아이디: <input type="text" placeholder="아이디" id="sidebar_id"
                                                         style="margin-left: 21px"/></label><br>
                     <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호"
                                                                id="sidebar_password"

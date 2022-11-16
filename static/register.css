@@ -1,107 +1,119 @@
-@import url('https://fonts.googleapis.com/css?family=Jua:400');
-* {
-    font-family: 'Jua', sans-serif;
-}
+/*@import url('https://fonts.googleapis.com/css?family=Jua:400');*/
+/** {*/
+/*    font-family: 'Jua', sans-serif;*/
+/*}*/
 
 body {
     background: #FDEDD3;
 }
 
 .registerBox {
-            background-color: white;
+    background-color: white;
 
-            width: 500px;
-            height: 450px;
+    width: 450px;
+    height: 500px;
 
-            border-radius: 20px;
-            border: 1px solid black;
+    border-radius: 20px;
+    border: 1px dashed black;
 
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .registerTittle {
-            width: 500px;
-            height: 50px;
+.registerTittle {
+    width: 500px;
+    height: 50px;
 
-            text-align: center;
-            font-size: xx-large;
+    text-align: center;
+    font-size: xx-large;
 
-            position: absolute;
-            top: 20px;
-        }
+    position: absolute;
+    top: 30px;
+}
 
-        .inputBox {
-            height: 60%;
-            width: 100%;
+.inputBox {
+    height: 60%;
+    width: 100%;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .inputBox > div {
-            margin: auto 0;
-        }
+.inputBox > div {
+    margin: auto 0;
+}
 
-        .inputBox > div > span{
-            width: 180px;
-            height: 20px;
+.inputBox > div > span{
+    width: 180px;
+    height: 20px;
 
-            position: absolute;
-            left: 10px;
+    position: absolute;
+    left: 10px;
 
-            text-align: center;
-            font-size: x-large;
-        }
+    text-align: center;
+    font-size: x-large;
+}
 
-        .inputBox > div > input {
-            background-color: #fba916;
+.inputBox > div > input {
+    /*background-color: white;*/
 
-            border: 1px solid black;
-            border-radius: 5px;
+    border: 1px dashed #ED3128;
+    border-radius: 5px;
 
-            width: 180px;
-            height: 30px;
+    width: 200px;
+    height: 30px;
 
-            position: absolute;
-            right: 10px;
+    position: absolute;
+    right: 10px;
 
-            font-size: large;
-        }
+    font-size: large;
 
-        .inputBox > div > input:hover {
-            border: 2px solid #be0516;
-        }
+    margin-right: 15px;
 
-        .inputBox > div > input:focus {
-            box-shadow: inset 0px 0px 10px 5px rgba(247, 212, 95, 0.9);
-        }
+    padding: 0 10px 0 10px;
+}
 
-        .inputBox > div > i {
-            position: absolute;
-            z-index: 2;
-            right: 15px;
-            margin-top:8px;
-        }
+.inputBox > div > input:hover {
+    border: 1px solid black;
+}
 
-        .registerBox > button {
-            background-color: #bf0516;
-            color: white;
+.inputBox > div > input:focus {
+    /*box-shadow: inset 0px 0px 10px 5px rgba(252, 170, 22, 0.5);*/
+    border: 2px solid #ED3128;
+}
 
-            width: 150px;
-            height: 50px;
+.inputBox > div > i {
+    position: absolute;
+    z-index: 2;
+    right: 35px;
+    margin-top:8px;
+}
 
-            position: absolute;
-            bottom: 20px;
+.registerBox > button {
+    background-color: #ED3128;
+    color: white;
 
-            font-size: large;
-        }
+    width: 150px;
+    height: 50px;
+
+    position: absolute;
+    bottom: 20px;
+
+    font-size: large;
+
+    border-radius: 5px;
+    border: #ED3128 solid 1px;
+}
+
+.registerBox > button:hover {
+    border: black solid 2px;
+}
