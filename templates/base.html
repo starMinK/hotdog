@@ -89,20 +89,6 @@
         function goMap() {
             window.location.href = ("/map");
         }
-
-        function cookieCheck() {
-            if (document.cookie) {
-                let tempHtml = ``;
-                $('.sidebar').empty();
-
-                tempHtml = `<div class="sidebar_navBtn">
-                    <button>리뷰보기</button>
-                    <button>메뉴보기</button>
-                </div>`
-
-                $('.sidebar').append(tempHtml);
-            }
-        }
     </script>
     <style>
         @font-face {
