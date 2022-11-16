@@ -9,6 +9,7 @@ ca = certifi.where()
 client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/?retryWrites=true&w=majority',tlsCAFile=ca)
 db = client.hotdogs
 
+
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
 SECRET_KEY = 'team1HotdogSecretKey'
@@ -22,7 +23,6 @@ import datetime
 # 회원가입 시엔, 비밀번호를 암호화하여 DB에 저장해두는 게 좋습니다.
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
-
 @app.route("/")
 def homeHtml():
     return render_template('index.html')
@@ -52,6 +52,7 @@ def menu_get():
 def recomment():
     return render_template('recomment.html')
 
+
 @app.route("/api/recomment", methods=["POST"])
 def recomment_get():
     recomment_receive = request.form['recomment_give']
@@ -64,15 +65,29 @@ def recomment_get():
 def notice():
     return render_template('notice.html')
 
+@app.route("/detail")
+def detailHtml():
+    return render_template('detail.html')
+
+@app.route("/api/detail", methods=["POST"])
+def detail_post():
+    detail_receive = request.form['detail_give']
+    detail_name = db.menu.find_one({'name': detail_receive},{'_id': False})
+    return jsonify({'hotdogs':detail_name})
+
+
 @app.route("/hotdog-list", methods=["GET"])
 def hotdog_get():
     hotdog_list = list(db.menu.find({}, {'_id': False}))
     return jsonify({'hotdogs':hotdog_list})
 
-@app.route('/')
-def main():
-    return render_template('base.html')
+@app.route("/api/save-review", methods=["POST"])
+def comment_save():
+    star_count = request.form['starCount']
+    comment = request.form['comment']
 
+    db.comment.insert_one({"star": star_count, "comment": comment})
+    return jsonify({'msg': "success"})
 @app.route('/register')
 def register():
     return render_template('register.html')
@@ -113,6 +128,7 @@ def api_login():
         # exp에는 만료시간을 넣어줍니다. 만료시간이 지나면, 시크릿키로 토큰을 풀 때 만료되었다고 에러가 납니다.
         payload = {
             'id': id_receive,
+            # 'nickname'
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')

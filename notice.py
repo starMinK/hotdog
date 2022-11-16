@@ -7,7 +7,6 @@ ca = certifi.where()
 client = MongoClient('mongodb+srv://zoon:1234@cluster0.dbul0bg.mongodb.net/Cluster0?retryWrites=true&w=majority',tlsCAFile=ca)
 db = client.hotdogs
 
-
 @app.route('/notice')
 def home():
    return render_template('notice.html')

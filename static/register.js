@@ -53,13 +53,3 @@ function passwordShow() {
         $('.password').attr('type', "password");
     }
 }
-
-function passwordCheckShow() {
-    if ($('.passwordCheck').attr('type') == 'password') {
-        $('.passwordCheckBox > i').attr('class', "fa-sharp fa-solid fa-eye-slash");
-        $('.passwordCheck').attr('type', "text");
-    } else {
-        $('.passwordCheckBox > i').attr('class', "fa-sharp fa-solid fa-eye");
-        $('.passwordCheck').attr('type', "password");
-    }
-}
