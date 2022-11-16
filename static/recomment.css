@@ -15,15 +15,15 @@ main > .inner > .content  > img {
 }
 
 main > .inner > .content  > p:nth-child(1) {
-    font-size: 50px;
+    /*font-size: 50px;*/
     margin: 0  auto 30px auto;
 }
 main > .inner > .content  > p:nth-child(3) {
-    font-size: 40px;
+    /*font-size: 40px;*/
     margin: 30px;
 }
 main > .inner > .content  > p:nth-child(4) {
-    font-size: 30px;
+    /*font-size: 30px;*/
 
 }
 
@@ -37,7 +37,7 @@ footer {
 }
 footer > button {
     border: none;
-    font-size: 25px;
+    /*font-size: 25px;*/
     margin: 30px 20px 20px 20px;
     background-color: gray;
     color: #f7f7f7;

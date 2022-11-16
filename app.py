@@ -27,10 +27,6 @@ import hashlib
 def homeHtml():
     return render_template('index.html')
 
-@app.route("/detail")
-def detailHtml():
-    return render_template('detail.html')
-
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')

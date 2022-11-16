@@ -32,7 +32,7 @@ body {
     height: 50px;
 
     text-align: center;
-    font-size: xx-large;
+    /*font-size: xx-large;*/
 
     position: absolute;
     top: 30px;
@@ -60,7 +60,7 @@ body {
     left: 10px;
 
     text-align: center;
-    font-size: x-large;
+    /*font-size: x-large;*/
 }
 
 .inputBox > div > input {
@@ -75,7 +75,7 @@ body {
     position: absolute;
     right: 10px;
 
-    font-size: large;
+    /*font-size: large;*/
 
     margin-right: 15px;
 
@@ -108,7 +108,7 @@ body {
     position: absolute;
     bottom: 20px;
 
-    font-size: large;
+    /*font-size: large;*/
 
     border-radius: 5px;
     border: #ED3128 solid 1px;

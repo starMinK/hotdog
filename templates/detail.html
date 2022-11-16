@@ -8,32 +8,31 @@
         const name = getId();
         listing(name);
     });
-   
-        function getId() {
-            const urlParams = new URLSearchParams(location.search);
-            return urlParams.get('title');
-        }
 
-        function listing(name) {
-            $.ajax({
-                type: "POST",
-                url: "/api/detail",
-                data: {detail_give:name},
-                success: function (response) {
-                    let rows = response['hotdogs']
-                    console.log(rows['name'])
+    function getId() {
+        const urlParams = new URLSearchParams(location.search);
+        return urlParams.get('title');
+    }
 
-                        let name = rows['name']
-                        let content = rows['content']
-                        let img = rows['detailImgUrl']
+    function listing(name) {
+        $.ajax({
+            type: "POST",
+            url: "/api/detail",
+            data: {detail_give: name},
+            success: function (response) {
+                let rows = response['hotdogs']
+                console.log(rows['name'])
 
-                        let temp_html = `<h3> ${name} </h3>
+                let name = rows['name']
+                let content = rows['content']
+                let img = rows['detailImgUrl']
+
+                let temp_html = `<h3> ${name} </h3>
                                         <img src="${img}">
                                         <p> ${content}</p>`
-                        $('.detail-box').append(temp_html)
-                }
+                $('.detail-box').append(temp_html)
             }
-        })
+        });
     }
 
     window.onload = () => {

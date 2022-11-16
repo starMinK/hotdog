@@ -11,7 +11,6 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
     <script src="https://kit.fontawesome.com/3847ec6431.js" crossorigin="anonymous"></script>
-
     {% block title %}
     <!--  페이지별 타이틀 공간  -->
     <title>Document</title>,
@@ -22,7 +21,7 @@
     {% endblock scripts %}
     <script>
         $(document).ready(function () {
-            if(document.cookie) {
+            if (document.cookie) {
                 const loginEle = document.querySelector('.sidebar_login');
                 const userEle = document.querySelector('.sidebar_user');
                 userEle.style.display = "block";
@@ -36,7 +35,7 @@
             $.ajax({
                 type: "POST",
                 url: "/api/show_user",
-                data: {token_give:token},
+                data: {token_give: token},
                 success: function (response) {
                     console.log(response['result']);
                     let userNick = response['result'];
@@ -68,7 +67,7 @@
                 }
             })
         }
-        
+
         function logout() {
             const token = document.cookie + ";";
             const date = new Date();
@@ -83,6 +82,7 @@
         function goRegister() {
             window.location.href = ("/register")
         }
+
         function goNotice() {
             window.location.href = ("/notice");
         }
@@ -102,6 +102,15 @@
         }
     </script>
     <style>
+        @font-face {
+            font-family: 'BMHANNAPro';
+            src: url('../static/BM-font-package/fonts/BMHANNAPro.ttf');
+        }
+
+        *{
+            font-family: BMHANNAPro;
+        }
+
         img {
             width: 300px;
             height: 56px;
@@ -122,7 +131,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .inner > label > .material-symbols-outlined {
             position: absolute;
             top: 0;
@@ -149,20 +158,20 @@
             flex-direction: column;
         }
 
-        .sidebar > .sidebar_user{
-            display:none;
-            font-size:30px;
+        .sidebar > .sidebar_user {
+            display: none;
+            font-size: 30px;
             text-align: center;
             width: 300px;
             height: 250px;
             margin: 150px 0px 0px 0px;
         }
 
-        .sidebar > .sidebar_user > button{
-            border:none;
-            border-radius:5px;
-            background:white;
-            font-size:25px;
+        .sidebar > .sidebar_user > button {
+            border: none;
+            border-radius: 5px;
+            background: white;
+            font-size: 25px;
             margin: 30px
         }
 
@@ -173,11 +182,11 @@
             height: 250px;
             margin: 120px 0px 0px 0px;
         }
-        
+
         .sidebar > .sidebar_login > legend {
             margin-bottom: 25px;
         }
-        
+
         .sidebar > .sidebar_login > label > input {
             margin-bottom: 30px;
             height: 25px;
@@ -185,13 +194,13 @@
             border: white solid 2px;
             border-radius: 5px;
         }
-        
+
         .sidebar > .sidebar_login > input {
             padding: 10px;
             border: none;
             border-radius: 5px;
         }
-        
+
         .sidebar > .sidebar_login > input:hover {
             background-color: #86300f;
             color: white;
@@ -214,7 +223,7 @@
             border-radius: 5px;
             background-color: white;
         }
-        
+
         .sidebar > .sidebar_navBtn > button:hover {
             background-color: #86300f;
             border: 2px solid #86300f;
@@ -223,7 +232,7 @@
         }
 
         .sidebar button:hover {
-            border:2px solid red;
+            border: 2px solid red;
         }
 
         input[id ="menucion"]:checked + .inner > label > .sidebar {
@@ -244,7 +253,7 @@
             <div class="sidebar">
                 <div class="sidebar_user"></div>
                 <fieldset class="sidebar_login">
-                    <legend> 로그인</legend>
+                    <legend>로그인</legend>
                     <label for="sidebar_id">아이디: <input type="text" placeholder="아이디" id="sidebar_id"
                                                         style="margin-left: 21px"/></label><br>
                     <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호"
