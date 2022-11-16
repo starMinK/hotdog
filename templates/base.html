@@ -115,7 +115,7 @@
             width: 300px;
             height: 56px;
         }
-
+        
         header {
             height: 200px;
             margin: 0;
@@ -245,7 +245,7 @@
 <header>
     <input type="checkbox" id="menucion" style="display: none"/>
     <div class="inner">
-        <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지">
+        <img src="https://myungranghotdog.com/images/site/kor/layout/logo.png" alt="로고 이미지" id="logoimg">
         <label for="menucion">
             <div class="material-symbols-outlined" id="open">
                 menu
@@ -271,5 +271,11 @@
     </div>
 </header>
 {% block content %} {% endblock content %}
+<script>
+    const logoImg = document.querySelector('#logoimg');
+    logoImg.addEventListener('click',(event) => {
+        window.location.href = '/'
+    });
+</script>
 </body>
 </html>
