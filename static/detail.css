@@ -126,3 +126,20 @@
 
     margin-left: 10px;
 }
+
+.textBox {
+    /*background-color: #cff3d4;*/
+    border: 1px #86300f solid;
+    border-radius: 10px;
+    width: 50%;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.comment-text {
+    border: 1px #86300f solid;
+    border-radius: 10px;
+
+    margin-top: 10px;
+    padding: 10px;
+}
