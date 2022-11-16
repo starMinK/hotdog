@@ -4,39 +4,101 @@
 <link rel="stylesheet" href="../static/detail.css">
 
 <script>
+    $(document).ready(function () {
+        listing();
+        const name = getId();
+        console.log(name);
+    });
 
-        $(document).ready(function () {
-            listing();
-            const name = getId();
-            console.log(name);
-        });
+    function getId() {
+        const urlParams = new URLSearchParams(location.search);
+        console.log(urlParams.get('title'));
+        return urlParams.get('title');
+    }
 
-        function getId() {
-            const urlParams = new URLSearchParams(location.search);
-            console.log(urlParams.get('title'));
-            return urlParams.get('title');
-        }
+    function listing() {
+        $.ajax({
+            type: "GET",
+            url: "/hotdog-list",
+            data: {},
+            success: function (response) {
+                let rows = response['hotdogs']
+                for (let i = 0; i < rows.length; i++) {
+                    let name = rows[i]['name']
+                    let content = rows[i]['content']
+                    let img = rows[i]['detailImgUrl']
 
-        function listing() {
-            $.ajax({
-                type: "GET",
-                url: "/hotdog-list",
-                data: {},
-                success: function (response) {
-                    let rows = response['hotdogs']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let content = rows[i]['content']
-                        let img = rows[i]['detailImgUrl']
-
-                        let temp_html = `<h3> ${name} </h3>
+                    let temp_html = `<h3> ${name} </h3>
                                         <img src="${img}">
                                         <p> ${content}</p>`
-                        $('.detail-box').append(temp_html)
-                    }
+                    $('.detail-box').append(temp_html)
                 }
-            })
+            }
+        })
+    }
+
+    window.onload = () => {
+        document.querySelector('.dropbtn_click').onclick = () => {
+            dropdown();
         }
+        document.getElementsByClassName('fastfood').onclick = () => {
+            showMenu(value);
+        };
+        dropdown = () => {
+            let v = document.querySelector('.dropdown-content');
+            let dropbtn = document.querySelector('.dropbtn')
+            v.classList.toggle('show');
+            dropbtn.style.borderColor = 'rgb(94, 94, 94)';
+        }
+
+        showMenu = (value) => {
+            let dropbtn_content = document.querySelector('.dropbtn_content');
+            let dropbtn_click = document.querySelector('.dropbtn_click');
+            let dropbtn = document.querySelector('.dropbtn');
+
+            dropbtn_content.innerText = value;
+            dropbtn_content.style.color = '#252525';
+            dropbtn.style.borderColor = '#3992a8';
+        }
+    }
+    window.onclick = (e) => {
+        if (!e.target.matches('.dropbtn_click')) {
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+
+            let dropbtn_content = document.querySelector('.dropbtn_content');
+            let dropbtn_click = document.querySelector('.dropbtn_click');
+            let dropbtn = document.querySelector('.dropbtn');
+
+            let i;
+            for (i = 0; i < dropdowns.length; i++) {
+                let openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    function saveReview() {
+        //로그인이 아니라면 alret->로그인 해주세요. 쿠키로 확인
+        let starCount = $('.dropbtn_content');
+        console.log(starCount)
+        let comment = $('.comment-input').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/api/save-review",
+            data: {comment: comment, starCount: starCount},
+            success: function (response) {
+                if (response['msg'] == "success") {
+                    alert("저장이 되었습니다.")
+                    window.location.reload();
+                } else {
+                    alert(response['msg'])
+                }
+            }
+        });
+    }
 </script>
 {% endblock scripts %}
 
@@ -44,7 +106,26 @@
 <div class="detail-box">
 </div>
 <div class="comment-box">
-    <input type="text" placeholder="의견을 남겨주세요.">
-    <button>등록</button>
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_content">⭐⭐⭐⭐⭐</span>
+            <span class="dropbtn_click"
+                  style="font-family: Material Icons; font-size : 16px; color : #3b3b3b; float:right;"
+                  onclick="dropdown()">arrow_drop_down</span>
+        </button>
+        <div class="dropdown-content">
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐</div>
+        </div>
+    </div>
+    <input class="comment-input" type="text" placeholder="의견을 남겨주세요.">
+    <button onclick="saveReview()">등록</button>
+</div>
+
+<div class="comment-list">
+    <div class="textBox">123</div>
 </div>
 {% endblock content %}

@@ -22,7 +22,6 @@ import datetime
 # 회원가입 시엔, 비밀번호를 암호화하여 DB에 저장해두는 게 좋습니다.
 # 그렇지 않으면, 개발자(=나)가 회원들의 비밀번호를 볼 수 있으니까요.^^;
 import hashlib
-
 @app.route("/")
 def homeHtml():
     return render_template('index.html')
@@ -46,7 +45,11 @@ def menu_get():
 
 @app.route("/recomment", methods=["GET"])
 def recomment():
-    return render_template('recomment.html');
+    return render_template('recomment.html')
+
+@app.route('/detail')
+def detail():
+    return render_template('detail.html')
 
 @app.route('/notice')
 def notice():
@@ -57,10 +60,13 @@ def hotdog_get():
     hotdog_list = list(db.menu.find({}, {'_id': False}))
     return jsonify({'hotdogs':hotdog_list})
 
-@app.route('/')
-def main():
-    return render_template('base.html')
+@app.route("/api/save-review", methods=["POST"])
+def comment_save():
+    star_count = request.form['starCount']
+    comment = request.form['comment']
 
+    db.comment.insert_one({"star": star_count, "comment": comment})
+    return jsonify({'msg': "success"})
 @app.route('/register')
 def register():
     return render_template('register.html')
@@ -101,6 +107,7 @@ def api_login():
         # exp에는 만료시간을 넣어줍니다. 만료시간이 지나면, 시크릿키로 토큰을 풀 때 만료되었다고 에러가 납니다.
         payload = {
             'id': id_receive,
+            # 'nickname'
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
