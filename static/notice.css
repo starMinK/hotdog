@@ -37,15 +37,15 @@
 .notice {
     width: 1200px;
     margin: auto;
-
 }
+
 .notice > .card {
     height: 300px;
-    width: 348px;
+    width: 346px;
 
     float: left;
 
-    border: #86300f solid 1px;
+    border: #86300f solid 2px;
     border-radius: 10px;
 
     text-align: center;

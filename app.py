@@ -57,10 +57,32 @@ def recomment():
 
 
 @app.route("/api/recomment", methods=["POST"])
-def recomment_get():
+def recomment_post():
     recomment_receive = request.form['recomment_give']
     recommnet_name = db.menu.find_one({'result': recomment_receive}, {'_id': False})
     return jsonify({'result': recommnet_name})
+
+@app.route("/api/number", methods=["POST"])
+def number_get():
+    name_receive = request.form['name_give']
+    recommnet_name = db.menu.find_one({'result':name_receive}, {'_id':False}) 
+    print(recommnet_name['total'])
+    return jsonify({'result':recommnet_name['total']})
+
+
+@app.route("/api/plus", methods=["POST"])
+def plus_post():
+    num_receive = request.form['num_give']
+    name_receive = request.form['name_give']
+    print(num_receive)
+    print(name_receive)
+    db.menu.update_one({'result':name_receive}, {'$set':{'total': int(num_receive)}})
+    return jsonify({'result':"total변경 성공"})
+
+@app.route("/api/total", methods=["GET"])
+def total_get():
+    total_list = list(db.menu.find({}, {'_id':False}))
+    return jsonify({'result':total_list})
 
 
 @app.route('/notice')
