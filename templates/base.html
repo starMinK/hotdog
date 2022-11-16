@@ -21,6 +21,33 @@
     <!--  페이지별 스크립트 공간  -->
     {% endblock scripts %}
     <script>
+        $(document).ready(function () {
+            if(document.cookie) {
+                const loginEle = document.querySelector('.sidebar_login');
+                const userEle = document.querySelector('.sidebar_user');
+                userEle.style.display = "block";
+                loginEle.style.display = 'none';
+                const token = document.cookie;
+                showUser(token);
+            }
+        });
+
+        function showUser(token) {
+            $.ajax({
+                type: "POST",
+                url: "/api/show_user",
+                data: {token_give:token},
+                success: function (response) {
+                    console.log(response['result']);
+                    let userNick = response['result'];
+                    let temp_html = `<p>어서오세요 ${userNick}님!</p>
+                                    <button onclick="logout()">로그 아웃</button>`
+
+                    $('.sidebar_user').append(temp_html);
+                }
+            })
+        }
+
         function login() {
             console.log($('#sidebar_id').val(), $('#sidebar_password').val())
             $.ajax({
@@ -40,6 +67,17 @@
                     }
                 }
             })
+        }
+        
+        function logout() {
+            const token = document.cookie + ";";
+            const date = new Date();
+            date.setDate(date.getDate() - 1);
+            let willCooike = token;
+            willCooike += "expires=" + date.toUTCString();
+            document.cookie = willCooike;
+            alert('로그아웃 되었습니다!');
+            window.location.reload();
         }
 
         function goRegister() {
@@ -97,11 +135,6 @@
             background-color: inherit;
         }
 
-        /* 사이드 닫는 x버튼*/
-        #close {
-            display: none;
-        }
-
         /* sidebar */
         .sidebar {
             width: 300px;
@@ -115,6 +148,24 @@
             display: flex;
             flex-direction: column;
         }
+
+        .sidebar > .sidebar_user{
+            display:none;
+            font-size:30px;
+            text-align: center;
+            width: 300px;
+            height: 250px;
+            margin: 150px 0px 0px 0px;
+        }
+
+        .sidebar > .sidebar_user > button{
+            border:none;
+            border-radius:5px;
+            background:white;
+            font-size:25px;
+            margin: 30px
+        }
+
 
         .sidebar > .sidebar_login {
             text-align: center;
@@ -147,6 +198,10 @@
             background-color: white
         }
 
+        .sidebar button:hover {
+            border:2px solid red;
+        }
+
         input[id ="menucion"]:checked + .inner > label > .sidebar {
             right: 0;
         }
@@ -162,10 +217,8 @@
             <div class="material-symbols-outlined" id="open">
                 menu
             </div>
-            <div class="material-symbols-outlined" id="close">
-                close
-            </div>
             <div class="sidebar">
+                <div class="sidebar_user"></div>
                 <fieldset class="sidebar_login">
                     <legend> 로그인</legend>
                     <label for="sidebar_id">아이디: <input type="text" placeholder="비밀번호" id="sidebar_id"
@@ -183,18 +236,6 @@
             </div>
         </label>
     </div>
-    <script>
-        const closeBtn = document.querySelector('#close');
-        const openBtn = document.querySelector('#open');
-        closeBtn.addEventListener('click', () => {
-            openBtn.style.display = 'block';
-            closeBtn.style.display = 'none';
-        });
-        openBtn.addEventListener('click', () => {
-            openBtn.style.display = 'none';
-            closeBtn.style.display = 'block';
-        });
-    </script>
 </header>
 {% block content %} {% endblock content %}
 </body>

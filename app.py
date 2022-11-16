@@ -116,12 +116,21 @@ def api_login():
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-
         # token을 줍니다.
         return jsonify({'result': 'success', 'token': token})
     # 찾지 못하면
     else:
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+    
+@app.route('/api/show_user', methods=['POST'])
+def api_showUser():
+    token_receive = request.form['token_give'][8:]
+    print(token_receive)
+    deco = jwt.decode(token_receive, SECRET_KEY , algorithms=['HS256'])
+    print(deco)
+    userId = deco['id']
+    user_inform = db.user.find_one({'id':userId},{'_id':False})
+    return jsonify({"result":user_inform['nick']})
 
 if __name__ == "__main__":
     app.run('0.0.0.0', port=5500, debug=True)
