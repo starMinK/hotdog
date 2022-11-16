@@ -7,6 +7,7 @@
     $(document).ready(function () {
         const name = getId();
         listing(name);
+        loadcomment();
     });
 
     function getId() {
@@ -78,24 +79,52 @@
     }
 
     function saveReview() {
-        //로그인이 아니라면 alret->로그인 해주세요. 쿠키로 확인
-        let starCount = $('.dropbtn_content');
-        console.log(starCount)
-        let comment = $('.comment-input').val();
+        if (document.cookie) {
+            //로그인이 아니라면 alret->로그인 해주세요. 쿠키로 확인
+            let starCount = document.getElementById('star').innerHTML;
+            let comment = $('.comment-input').val();
+            const token = document.cookie;
+            let pagecoor = getId();
 
+            $.ajax({
+                type: "POST",
+                url: "/api/save-review",
+                data: {comment: comment, starCount: starCount, token_give: token, pagecoor: pagecoor},
+                success: function (response) {
+                    if (response['msg'] == "success") {
+                        alert("저장이 되었습니다.")
+                        window.location.reload();
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            });
+        } else {
+            alert("로그인을 해주세요.");
+        }
+    }
+
+    function loadcomment(){
         $.ajax({
             type: "POST",
-            url: "/api/save-review",
-            data: {comment: comment, starCount: starCount},
+            url: "/api/load-comment",
+            data: {title_give: getId()},
             success: function (response) {
-                if (response['msg'] == "success") {
-                    alert("저장이 되었습니다.")
-                    window.location.reload();
-                } else {
-                    alert(response['msg'])
+                let rows = response['result']
+                for (let i = 0; i < rows.length; i++) {
+                    let nickname = rows[i]['nickname']
+                    let star = rows[i]['star']
+                    let comment = rows[i]['comment']
+
+                    let temp_html = `<div class="textBox">
+                                        <span>${star}ㅣ ${nickname}님의 글</span>
+                                        <div class="comment-text">${comment}</div>
+                                    </div>`
+
+                    $('.comment-list').append(temp_html)
                 }
             }
-        });
+        })
     }
 </script>
 {% endblock scripts %}
@@ -104,10 +133,11 @@
 
 <div class="detail-box">
 </div>
+
 <div class="comment-box">
     <div class="dropdown">
         <button class="dropbtn">
-            <span class="dropbtn_content">⭐⭐⭐⭐⭐</span>
+            <span class="dropbtn_content" id="star">⭐⭐⭐⭐⭐</span>
             <span class="dropbtn_click"
                   style="font-family: Material Icons; font-size : 16px; color : #3b3b3b; float:right;"
                   onclick="dropdown()">arrow_drop_down</span>
@@ -125,6 +155,6 @@
 </div>
 
 <div class="comment-list">
-    <div class="textBox">123</div>
+
 </div>
 {% endblock content %}
