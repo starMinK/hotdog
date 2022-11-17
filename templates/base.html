@@ -39,8 +39,8 @@
                 success: function (response) {
                     console.log(response['result']);
                     let userNick = response['result'];
-                    let temp_html = `<p>어서오세요 ${userNick}님!</p>
-                                    <button onclick="logout()">로그 아웃</button>`
+                    let temp_html = `<p class="login_nick">어서오세요<br><br>${userNick}님!</p>
+                                    <button onclick="logout()" class="logout_btn">로그 아웃</button>`
 
                     $('.sidebar_user').append(temp_html);
                 }
@@ -146,6 +146,11 @@
             display: flex;
             flex-direction: column;
         }
+        
+        .login_nick {
+            font-family: BMHANNAPro;
+            margin: 0 20px 0 20px;
+        }
 
         .sidebar > .sidebar_user {
             display: none;
@@ -160,42 +165,65 @@
             border: none;
             border-radius: 5px;
             background: white;
-            font-size: 25px;
-            margin: 30px
+            font-size: 20px;
+            margin: 40px 0 30px 0;
+            padding: 10px;
         }
-
+        
+        .sidebar > .sidebar_user > button:hover {
+            background-color: #FDEDD3;
+            /*color: white;*/
+            transition: 0.3s;
+        }
 
         .sidebar > .sidebar_login {
             font-family: 'BMHANNAPro';
+            font-size: 20px;
             text-align: center;
             width: 300px;
             height: 250px;
-            margin: 120px 0px 0px 0px;
+            margin: 120px auto 20px auto;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .sidebar > .sidebar_login > legend {
+            font-size: 25px;
             margin-bottom: 25px;
         }
 
-        .sidebar > .sidebar_login > label > input {
-            margin-bottom: 30px;
-            height: 25px;
-            padding: 5px;
-            border: white solid 2px;
-            border-radius: 5px;
-        }
+        /*.sidebar > .sidebar_login > label > input {*/
+        /*    margin-bottom: 30px;*/
+        /*    height: 25px;*/
+        /*    padding: 5px;*/
+        /*    border: white solid 2px;*/
+        /*    border-radius: 5px;*/
+        /*}*/
 
         .sidebar > .sidebar_login > input {
+            font-size: 20px;
             padding: 10px;
             border: none;
             border-radius: 5px;
+            width: 200px;
         }
-
-        .sidebar > .sidebar_login > input:hover {
-            background-color: #86300f;
+        
+        .sidebar > .sidebar_login > .login_btn {
+            width: 120px;
+        }
+        
+        .sidebar > .sidebar_login > .login_btn:hover {
+            background-color: #ED3128;
             color: white;
             transition: 0.3s;
         }
+        /*.sidebar > .sidebar_login > submit  :hover {*/
+        /*    background-color: #ED3128;*/
+        /*    color: white;*/
+        /*    transition: 0.3s;*/
+        /*}*/
 
         .sidebar > .sidebar_navBtn {
             display: flex;
@@ -207,7 +235,7 @@
         }
 
         .sidebar > .sidebar_navBtn > button {
-            margin: 15px 50px 15px 50px;
+            margin: 15px auto 15px auto;
             font-size: 25px;
             border-left: none;
             border-right: none;
@@ -249,18 +277,15 @@
                 <div class="sidebar_user"></div>
                 <fieldset class="sidebar_login">
                     <legend>로그인</legend>
-                    <label for="sidebar_id">아이디: <input type="text" placeholder="아이디" id="sidebar_id"
-                                                        style="margin-left: 21px"/></label><br>
-                    <label for="sidebar_password">비밀번호: <input type="password" placeholder="비밀번호"
-                                                               id="sidebar_password"
-                                                               style="margin-left: 5px"/></label><br>
-                    <input type="submit" value="로그인 하기" onclick="login()"/>
+                    <input type="text" placeholder="아이디" id="sidebar_id" style="margin-left: 21px"/>
+                    <input type="password" placeholder="비밀번호" id="sidebar_password" style="margin-left: 5px"/>
+                    <input class="login_btn" type="submit" value="로그인 하기" onclick="login()"/>
                 </fieldset>
                 <div class="sidebar_navBtn">
                     <button onclick="goRegister()">회원가입</button>
                     <button>리뷰보기</button>
                     <button onclick="goNotice()">메뉴보기</button>
-                    <button onclick="goMap()">근처 매장 찾기</button>
+                    <button onclick="goMap()">근처 매장찾기</button>
                 </div>
             </div>
         </label>
