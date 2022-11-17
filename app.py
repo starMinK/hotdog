@@ -41,10 +41,10 @@ def home():
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
 
-@app.route("/main", methods=["GET"])
-def menu_get():
-    menu_list = list(db.menu.find({}, {'_id': False}))
-    return jsonify({'menu_list': menu_list})
+# @app.route("/main", methods=["GET"])
+# def menu_get():
+    # menu_list = list(db.menu.find({}, {'_id': False}))
+    # return jsonify({'menu_list': menu_list})
 
 
 @app.route("/map")
