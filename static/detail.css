@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.detail-box {
+    font-family: BMHANNAPro;
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.detail-box > img {
+    width: 800px;
+    height: 600px;
+    object-fit: cover;
+    margin: 20px auto 20px auto;
+
+}
+
+.detail-box > h3 {
+    font-size: 50px;
+    margin: 40px auto 20px auto;
+
+}
+
+.detail-box > p {
+    font-size: 25px;
+    margin: 20px auto 70px auto;
+
+}
+
+.dropdown-label {
+    font-size: 12px;
+    margin: 10px;
+    font-weight: bold;
+    color: rgb(50, 50, 50);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    display: block;
+    border: 1px solid rgb(127, 127, 127);
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    font-weight: 400;
+    color: rgb(124, 124, 124);
+    margin-right: 10px;
+    width: 240px;
+    height: 40px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 1;
+    position: relative;
+    padding-left: 20px;
+}
+
+.dropdown-content {
+    display: none;
+    font-weight: 400;
+    background-color: #fcfcfc;
+    min-width: 240px;
+    border-radius: 8px;
+    height: 160px;
+    overflow: scroll;
+    box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
+}
+
+.dropdown-content::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: rgb(194, 194, 194)
+}
+
+.dropdown-content div {
+    display: block;
+    text-decoration: none;
+    color: rgb(37, 37, 37);
+}
+
+.dropdown-content div:hover {
+    background-color: rgb(226, 226, 226);
+}
+
+.dropdown-content.show {
+    display: block;
+    width: 240px;
+}
+
+.dropbtn_content {
+    font-size: 17px;
+}
+
+.comment-input {
+    font-size: 17px;
+}
+
+.comment-box {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-box > input {
+    width: 500px;
+
+    border: gray solid 1px;
+    border-radius: 7px;
+
+    padding: 10px;
+}
+
+.comment-box > button {
+    font-size: 17px;
+
+    color: white;
+
+    background-color: gray;
+
+    border: #ED3128 solid 0px;
+    border-radius: 7px;
+
+    padding: 9px 10px 10px 9px;
+
+    margin-left: 10px;
+}
+
+.comment-box > button:hover {
+    background-color: #ED3128;
+    color: white;
+    transition: 0.3s;
+}
+
+.textBox {
+    /*background-color: #cff3d4;*/
+    font-family: BMHANNAPro;
+    font-size: 19px;
+    border: 1px gray dashed;
+    border-radius: 10px;
+    width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.comment-text {
+    border: 1px black solid;
+    border-radius: 10px;
+
+    background-color: #fdf6e9;
+    margin-top: 10px;
+    padding: 10px;
+
+    line-height: 150%;
+}
+
+.comment-list {
+    width: 1200px;
+    margin: auto;
+}

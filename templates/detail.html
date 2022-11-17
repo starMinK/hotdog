@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block title %}<title>상세 페이지</title>{% endblock title %}
+{% block scripts %}
+<link rel="stylesheet" href="../static/detail.css">
+
+<script>
+    $(document).ready(function () {
+        const name = getId();
+        listing(name);
+        loadcomment();
+    });
+
+    function getId() {
+        const urlParams = new URLSearchParams(location.search);
+        return urlParams.get('title');
+    }
+
+    function listing(name) {
+        $.ajax({
+            type: "POST",
+            url: "/api/detail",
+            data: {detail_give: name},
+            success: function (response) {
+                let rows = response['hotdogs']
+
+                let name = rows['name']
+                let content = rows['content']
+                let img = rows['detailImgUrl']
+
+                let temp_html = `<h3> ${name} </h3>
+                                        <img src="${img}">
+                                        <p> ${content}</p>`
+                $('.detail-box').append(temp_html)
+            }
+        });
+    }
+
+    window.onload = () => {
+        document.querySelector('.dropbtn_click').onclick = () => {
+            dropdown();
+        }
+        document.getElementsByClassName('fastfood').onclick = () => {
+            showMenu(value);
+        };
+        dropdown = () => {
+            let v = document.querySelector('.dropdown-content');
+            let dropbtn = document.querySelector('.dropbtn')
+            v.classList.toggle('show');
+            dropbtn.style.borderColor = 'rgb(94, 94, 94)';
+        }
+
+        showMenu = (value) => {
+            let dropbtn_content = document.querySelector('.dropbtn_content');
+            let dropbtn_click = document.querySelector('.dropbtn_click');
+            let dropbtn = document.querySelector('.dropbtn');
+
+            dropbtn_content.innerText = value;
+            dropbtn_content.style.color = '#252525';
+            dropbtn.style.borderColor = '#3992a8';
+        }
+    }
+    window.onclick = (e) => {
+        if (!e.target.matches('.dropbtn_click')) {
+            let dropdowns = document.getElementsByClassName("dropdown-content");
+
+            let dropbtn_content = document.querySelector('.dropbtn_content');
+            let dropbtn_click = document.querySelector('.dropbtn_click');
+            let dropbtn = document.querySelector('.dropbtn');
+
+            let i;
+            for (i = 0; i < dropdowns.length; i++) {
+                let openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+    function saveReview() {
+        if (document.cookie) {
+            //로그인이 아니라면 alret->로그인 해주세요. 쿠키로 확인
+            let starCount = document.getElementById('star').innerHTML;
+            let comment = $('.comment-input').val();
+            const token = document.cookie;
+            let pagecoor = getId();
+
+            $.ajax({
+                type: "POST",
+                url: "/api/save-review",
+                data: {comment: comment, starCount: starCount, token_give: token, pagecoor: pagecoor},
+                success: function (response) {
+                    if (response['msg'] == "success") {
+                        alert("저장이 되었습니다.")
+                        window.location.reload();
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            });
+        } else {
+            alert("로그인을 해주세요.");
+        }
+    }
+
+    function loadcomment(){
+        $.ajax({
+            type: "POST",
+            url: "/api/load-comment",
+            data: {title_give: getId()},
+            success: function (response) {
+                let rows = response['result']
+                for (let i = 0; i < rows.length; i++) {
+                    let nickname = rows[i]['nickname']
+                    let star = rows[i]['star']
+                    let comment = rows[i]['comment']
+
+                    let temp_html = `<div class="textBox">
+                                        <span>${star}ㅣ ${nickname}님의 글</span>
+                                        <div class="comment-text">셎${comment}셎</div>
+                                    </div>`
+
+                    $('.comment-list').append(temp_html)
+                }
+            }
+        })
+    }
+</script>
+{% endblock scripts %}
+
+{% block content %}
+
+<div class="detail-box">
+</div>
+
+<div class="comment-box">
+    <div class="dropdown">
+        <button class="dropbtn">
+            <span class="dropbtn_content" id="star">⭐⭐⭐⭐⭐</span>
+            <span class="dropbtn_click"
+                  style="font-family: Material Icons; font-size : 16px; color : #3b3b3b; float:right;"
+                  onclick="dropdown()">arrow_drop_down</span>
+        </button>
+        <div class="dropdown-content">
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐⭐</div>
+            <div class="fastfood" onclick="showMenu(this.innerText)">⭐</div>
+        </div>
+    </div>
+    <input class="comment-input" type="text" placeholder="의견을 남겨주세요.">
+    <button onclick="saveReview()">등록</button>
+</div>
+<div class="comment-list">
+
+</div>
+{% endblock content %}

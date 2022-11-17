@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}<title>메뉴 목록</title>{% endblock title %}
+{% block scripts %}
+<link rel="stylesheet" href="../static/notice.css">
+
+<script>
+    $(document).ready(function () {
+        listing();
+        click();
+    });
+
+    function click() {
+        const divEle = document.querySelectorAll('.card');
+        for (let i = 0; i < divEle.length; i++) {
+            const titleEle = document.querySelectorAll('.card-title');
+            const text = titleEle[i].innerText;
+            divEle[i].addEventListener('click', function () {
+                window.location.href = '/detail?title=' + text;
+            });
+        }
+    }
+
+    function listing() {
+        $.ajax({
+            type: "GET",
+            url: "/hotdog-list",
+            data: {},
+            success: function (response) {
+                let rows = response['hotdogs']
+                for (let i = 0; i < rows.length; i++) {
+                    let name = rows[i]['name']
+                    let content = rows[i]['content']
+                    let img = rows[i]['imgUrl']
+
+                    let temp_html = `<div class="card">
+                                            <img src="${img} class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${name}</h5>
+                                                <p class="card-text">${content}</p>
+                                            </div>
+                                        </div>`
+                    $('#notice-box').append(temp_html)
+                }
+                click();
+            }
+        })
+    }
+
+</script>
+{% endblock scripts %}
+
+{% block content %}
+<div class="menu">
+    <div class="menu-pop">
+        <span class="pop menu1">핫</span>
+        <span class="pop menu2">도</span>
+        <span class="pop menu3">그</span>
+    </div>
+    <p>메뉴</p>
+</div>
+<div class="notice" id="notice-box">
+</div>
+{% endblock content %}

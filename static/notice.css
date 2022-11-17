@@ -1,0 +1,156 @@
+.menu {
+    font-family: BMHANNAPro;
+    font-size: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 40px;
+}
+
+.menu > .menu-pop {
+    text-decoration:none;
+}
+
+.menu > .menu-pop > .pop {
+    display: inline-block;
+    position: relative;
+    animation-name: popup;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.menu > .menu-pop > .menu1 {
+
+}
+
+.menu > .menu-pop > .menu2 {
+    animation-delay:0.4s;
+}
+
+.menu > .menu-pop > .menu3 {
+    animation-delay:0.8s;
+}
+
+.menu > p {
+    margin-left: 10px;
+}
+
+@keyframes popup {
+    0% {
+        top: -17px;
+    }
+    20% {
+        top: 0px;
+    }
+    100% {
+        top: 0px;
+    }
+}
+
+/* 검색창 */
+/*.search-box {*/
+/*    width: 1200px;*/
+/*    margin: auto;*/
+
+/*    padding: 30px 50px 0 0;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: right;*/
+/*}*/
+
+/*.search-box > input {*/
+/*    font-size: 17px;*/
+
+/*    width: 300px;*/
+
+/*    border: gray solid 1px;*/
+/*    border-radius: 7px;*/
+
+/*    padding: 10px;*/
+/*}*/
+
+/*.search-box > button {*/
+/*    font-size: 17px;*/
+
+/*    color: white;*/
+
+/*    background-color: gray;*/
+
+/*    border: #ED3128 solid 0px;*/
+/*    border-radius: 7px;*/
+
+/*    padding: 0 10px 0 10px;*/
+
+/*    margin-left: 10px;*/
+/*}*/
+
+/*.search-box > button:hover {*/
+/*    background-color: #ED3128;*/
+/*}*/
+
+/*메뉴 목록*/
+.notice {
+    font-family: BMHANNAPro;
+
+    width: 1200px;
+    margin: auto;
+}
+
+.notice > .card {
+    height: 300px;
+    width: 346px;
+
+    float: left;
+
+    border: black solid 2px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    margin: 50px 25px 0 25px;
+}
+
+.notice > .card:hover {
+    background-color: #FDEDD3;
+
+    border: #ED3128 solid 2px;
+
+    transition: 0.5s;
+}
+
+.notice > .card > img {
+    height: 140px;
+
+    margin: 10px 0 20px 0;
+}
+.card-title {
+    font-size: 25px;
+}
+.card-text {
+    margin: 20px 20px 0 20px;
+
+    font-size: 19px;
+}
+
+/* 밑줄생기는 css */
+.card-title {
+    display: inline-block;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.card-title:after {
+    display: block;
+    content: '';
+    border-bottom: solid 3px #ED3128;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+}
+
+.card-title:hover:after {
+    transform: scaleX(1);
+}
