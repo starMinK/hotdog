@@ -137,13 +137,13 @@
 }
 
 /* 밑줄생기는 css */
- .card-title {
+.card-title {
     display: inline-block;
     margin: 0;
     text-transform: uppercase;
 }
 
- .card-title:after {
+.card-title:after {
     display: block;
     content: '';
     border-bottom: solid 3px #ED3128;
@@ -151,6 +151,6 @@
     transition: transform 250ms ease-in-out;
 }
 
- .card-title:hover:after {
+.card-title:hover:after {
     transform: scaleX(1);
 }
