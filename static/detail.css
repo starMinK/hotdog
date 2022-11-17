@@ -165,3 +165,8 @@
 
     line-height: 150%;
 }
+
+.comment-list {
+    width: 1200px;
+    margin: auto;
+}

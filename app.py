@@ -69,7 +69,6 @@ def number_get():
     print(recommnet_name['total'])
     return jsonify({'result':recommnet_name['total']})
 
-
 @app.route("/api/plus", methods=["POST"])
 def plus_post():
     num_receive = request.form['num_give']
