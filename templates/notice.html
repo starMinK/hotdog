@@ -11,13 +11,10 @@
 
     function click() {
         const divEle = document.querySelectorAll('.card');
-        console.log(divEle);
         for (let i = 0; i < divEle.length; i++) {
             const titleEle = document.querySelectorAll('.card-title');
             const text = titleEle[i].innerText;
-            console.log(text);
             divEle[i].addEventListener('click', function () {
-                console.log('클릭됐습니다!');
                 window.location.href = '/detail?title=' + text;
             });
         }
@@ -61,10 +58,6 @@
     </div>
     <p>메뉴</p>
 </div>
-<!--<div class="search-box">-->
-<!--    <input type="text" placeholder="검색어를 입력하세요.">-->
-<!--    <button>검색</button>-->
-<!--</div>-->
 <div class="notice" id="notice-box">
 </div>
 {% endblock content %}

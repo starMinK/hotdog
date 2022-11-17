@@ -8,9 +8,7 @@
     $(document).ready(function () {
         const result = getId();
         posting(result);
-        //plusTotal();
         getNumber();
-        total();
     });
 
     function getNumber() {
@@ -19,7 +17,6 @@
             url: "/api/number",
             data: {name_give: getId()},
             success: function (response) {
-                console.log(response['result']);
                 const num = response['result'] + 1;
                 plusTotal(num);
             }
@@ -32,23 +29,75 @@
             url: "/api/plus",
             data: {name_give: getId(),num_give: num},
             success: function (response) {
-                console.log(response);
             }
         })
     }
 
-    function total() {
+    function total(color) {
+        let tags = '';
         $.ajax({
             type: "GET",
             url: "/api/total",
             data: {},
             success: function (response) {
-                console.log(response);
+                const rows = response['result'];
+                let temp_html = '';
+                const hotdogName = $('.hotdog_name').text();
+                
+                for(let i = 0; i < rows.length; i++) {
+                    for(let j = 0; j < rows.length; j++) {
+                        if(rows[i]['total'] > rows[j]['total']) {
+                            const copy = Object.assign({}, rows[i]);
+                            rows[i].total = rows[j].total;
+                            rows[i].name = rows[j].name;
+                            rows[j].total = copy.total;
+                            rows[j].name = copy.name;
+                        }
+                    }
+                }
+
+                for (let i = 0; i < rows.length; i++) {
+                    let name = rows[i]['name'];
+                    let total = rows[i]['total'];
+                    if(i === 0) {
+                        temp_html += `
+                            <p class="hotdogs"><span class="material-symbols-outlined" style="font-size:35px;">
+                                looks_one
+                                </span>${name} ${total}표</p>`
+                        continue;
+                    }
+                    if(i === 1) {
+                        temp_html += `
+                            <p class="hotdogs">
+                                <span class="material-symbols-outlined" style="font-size:32px;">
+                                looks_two
+                                </span>${name} ${total}표</p>`
+                        continue;
+                    }
+                    if(i === 2) {
+                        temp_html += `<p class="hotdogs">
+                            <span class="material-symbols-outlined style="font-size:30px;">
+                            looks_3
+                            </span>${name} ${total}표</p>`
+                        continue;
+                    }
+
+                    temp_html += `<p class="hotdogs">${name} ${total}표</p>`
+                }
+                $('.static').append(temp_html);
+                $('.hotdog_name').css('color',color);
+                const totalEle = document.querySelectorAll('.hotdogs');
+                for(let i = 0; i < totalEle.length; i++) {
+                    if(hotdogName === rows[i]['name']) {
+                        totalEle[i].style.color = color;
+                    }
+                }
             }
         })
     }
 
     function posting(result) {
+        let color = '';
         $.ajax({
             type: 'POST',
             url: '/api/recomment',
@@ -60,35 +109,35 @@
                 let content = rows['content'];
                 let tag = rows['tag'];
                 let tagEle = '';
-                console.log(title);
                 
                 switch(title){
-                    case '크림치즈 핫도그': tagEle = `<p id="cream">${tag}</p>`
+                    case '크림치즈 핫도그': tagEle = `<p id="cream" class="tags">${tag}</p>`
                     break;
-                    case '라면맵땅 핫도그':tagEle = `<p id="ramen">${tag}</p>`
+                    case '라면맵땅 핫도그':tagEle = `<p id="ramen" class="tags">${tag}</p>`
                     break;
-                    case '모짜체다 핫도그':tagEle = `<p id="mozzachedda">${tag}</p>`
+                    case '모짜체다 핫도그':tagEle = `<p id="mozzachedda" class="tags">${tag}</p>`
                     break;
-                    case '통모짜 핫도그':tagEle = `<p id="tongmozza">${tag}</p>`
+                    case '통모짜 핫도그':tagEle = `<p id="tongmozza" class="tags">${tag}</p>`
                     break;
-                    case '반반모짜 핫도그':tagEle = `<p id="halfmozza">${tag}</p>`
+                    case '반반모짜 핫도그':tagEle = `<p id="halfmozza" class="tags">${tag}</p>`
                     break;
-                    case '체다치즈 핫도그':tagEle = `<p id="cheddacheeze">${tag}</p>`
+                    case '체다치즈 핫도그':tagEle = `<p id="cheddacheeze" class="tags">${tag}</p>`
                     break;
-                    case '점보 핫도그':tagEle = `<p id="zumbo">${tag}</p>`
+                    case '점보 핫도그':tagEle = `<p id="zumbo" class="tags" >${tag}</p>`
                     break;
-                    case '할라피뇨 핫도그':tagEle = `<p id="halapinyu">${tag}</p>`
+                    case '할라피뇨 핫도그':tagEle = `<p id="halapinyu" class="tags" >${tag}</p>`
                     break;
-                    case '통 가래떡 핫도그':tagEle = `<p id="tongrice">${tag}</p>`
+                    case '통 가래떡 핫도그':tagEle = `<p id="tongrice" class="tags" >${tag}</p>`
                     break;
-                    case '명랑 핫도그':tagEle = `<p id="original">${tag}</p>`
+                    case '명랑 핫도그':tagEle = `<p id="original" class="tags" >${tag}</p>`
                     break;
                     default: console.log(title);
                 }
-                let temp_html = `<img src=${img}/><p>${title}</p> <p>${content}</p>`;
+                let temp_html = `<img src=${img}/><p class="hotdog_name">${title}</p> <p>${content}</p>`;
                 temp_html += tagEle;
-                console.log(temp_html);
                 $(`.content`).append(temp_html);
+                color = $('.tags').css("color");
+                total(color);
             }
         });
     }
@@ -111,8 +160,8 @@
 
 {% block content %}
 <main>
-    <div class="static">통계공간입니다</div>
     <div class="inner">
+        <div class="static">최고의 핫도그는?!</div>
         <div class="content">
             <p>짜잔! 당신의 핫도그는?!~</p>
         </div>
